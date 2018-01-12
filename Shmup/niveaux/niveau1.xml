@@ -1,0 +1,1045 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario>
+  <FPS>30</FPS>
+  <background>img/map.png</background>
+  <!-- Temps en milliseconde pour que toute la texture défile à l'écran -->
+  <vitesse_background>5000</vitesse_background>
+  <tailleX>400</tailleX>
+  <tailleY>700</tailleY>
+  <joueur>
+    <texture>img/avion1.png</texture>
+    <hitBox>img/avion1.hitbox</hitBox>
+    <pointDeVie>5000</pointDeVie>
+    <!-- Nombre de pixels à chaque nouvelle image -->
+    <vitesseDeplacement>4</vitesseDeplacement>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>200</cadenceTir>
+    <!-- Puissance d'une munition -->
+    <puissanceTir>
+      <TIR_UNIQUE>40</TIR_UNIQUE>
+      <!-- Pour avoir la puissance total, -->
+      <!-- il faut mutliplier par le nombre total -->
+      <!-- de munitions tirées en même temps-->
+      <PARALLELE>20</PARALLELE>
+      <!-- Pour avoir la puissance total, -->
+      <!-- il faut mutliplier par le nombre total -->
+      <!-- de munitions tirées en même temps-->
+      <EVENTAIL>15</EVENTAIL>
+    </puissanceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>1000</vitesseTir>
+  </joueur>
+
+  <!-- A recopier autant de fois qu'il y a d'ennemis-->
+  <ennemi>
+    <texture>img/small_ennemi_1_1.png</texture>
+    <pointDeVie>80</pointDeVie>
+    <pointsRecompense>10</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>VISE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>TIR_UNIQUE</nom>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>750</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>2000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>2000</temps>
+	<pointX>-100</pointX>
+	<pointY>350</pointY>
+      </etape>
+      <etape>
+	<temps>3000</temps>
+	<pointX>100</pointX>
+	<pointY>450</pointY>
+      </etape>
+      <etape>
+	<temps>8000</temps>
+	<pointX>100</pointX>
+	<pointY>450</pointY>
+      </etape>
+      <etape>
+	<temps>9000</temps>
+	<pointX>-100</pointX>
+	<pointY>450</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_1.png</texture>
+    <pointDeVie>80</pointDeVie>
+    <pointsRecompense>10</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>VISE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>TIR_UNIQUE</nom>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>750</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>2000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>2200</temps>
+	<pointX>-100</pointX>
+	<pointY>450</pointY>
+      </etape>
+      <etape>
+	<temps>3200</temps>
+	<pointX>100</pointX>
+	<pointY>550</pointY>
+      </etape>
+      <etape>
+	<temps>8200</temps>
+	<pointX>100</pointX>
+	<pointY>550</pointY>
+      </etape>
+      <etape>
+	<temps>9200</temps>
+	<pointX>-100</pointX>
+	<pointY>550</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_1.png</texture>
+    <pointDeVie>80</pointDeVie>
+    <pointsRecompense>10</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>VISE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>TIR_UNIQUE</nom>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>750</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>2000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>2400</temps>
+	<pointX>-100</pointX>
+	<pointY>550</pointY>
+      </etape>
+      <etape>
+	<temps>3400</temps>
+	<pointX>100</pointX>
+	<pointY>650</pointY>
+      </etape>
+      <etape>
+	<temps>8400</temps>
+	<pointX>100</pointX>
+	<pointY>650</pointY>
+      </etape>
+      <etape>
+	<temps>9400</temps>
+	<pointX>-100</pointX>
+	<pointY>650</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_1.png</texture>
+    <pointDeVie>80</pointDeVie>
+    <pointsRecompense>10</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>VISE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>TIR_UNIQUE</nom>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>750</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>2000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>2000</temps>
+	<pointX>500</pointX>
+	<pointY>350</pointY>
+      </etape>
+      <etape>
+	<temps>3000</temps>
+	<pointX>300</pointX>
+	<pointY>450</pointY>
+      </etape>
+      <etape>
+	<temps>8000</temps>
+	<pointX>300</pointX>
+	<pointY>450</pointY>
+      </etape>
+      <etape>
+	<temps>9000</temps>
+	<pointX>500</pointX>
+	<pointY>450</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_1.png</texture>
+    <pointDeVie>80</pointDeVie>
+    <pointsRecompense>10</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>VISE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>TIR_UNIQUE</nom>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>750</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>2000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>2200</temps>
+	<pointX>500</pointX>
+	<pointY>450</pointY>
+      </etape>
+      <etape>
+	<temps>3200</temps>
+	<pointX>300</pointX>
+	<pointY>550</pointY>
+      </etape>
+      <etape>
+	<temps>8200</temps>
+	<pointX>300</pointX>
+	<pointY>550</pointY>
+      </etape>
+      <etape>
+	<temps>9200</temps>
+	<pointX>500</pointX>
+	<pointY>550</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_1.png</texture>
+    <pointDeVie>80</pointDeVie>
+    <pointsRecompense>10</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>VISE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>TIR_UNIQUE</nom>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>750</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>2000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>2400</temps>
+	<pointX>500</pointX>
+	<pointY>550</pointY>
+      </etape>
+      <etape>
+	<temps>3400</temps>
+	<pointX>300</pointX>
+	<pointY>650</pointY>
+      </etape>
+      <etape>
+	<temps>8400</temps>
+	<pointX>300</pointX>
+	<pointY>650</pointY>
+      </etape>
+      <etape>
+	<temps>9400</temps>
+	<pointX>500</pointX>
+	<pointY>650</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_2.png</texture>
+    <pointDeVie>20</pointDeVie>
+    <pointsRecompense>50</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>ALEATOIRE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>PARALLELE</nom>
+      <nombreMunition>2</nombreMunition>
+      <ecartMunition>8</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>500</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>1000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>12000</temps>
+	<pointX>150</pointX>
+	<pointY>900</pointY>
+      </etape>
+      <etape>
+	<temps>13000</temps>
+	<pointX>150</pointX>
+	<pointY>600</pointY>
+      </etape>
+      <etape>
+	<temps>14000</temps>
+	<pointX>-100</pointX>
+	<pointY>100</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_2.png</texture>
+    <pointDeVie>20</pointDeVie>
+    <pointsRecompense>50</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>ALEATOIRE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>PARALLELE</nom>
+      <nombreMunition>2</nombreMunition>
+      <ecartMunition>8</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>500</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>1000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>12000</temps>
+	<pointX>250</pointX>
+	<pointY>900</pointY>
+      </etape>
+      <etape>
+	<temps>13000</temps>
+	<pointX>250</pointX>
+	<pointY>600</pointY>
+      </etape>
+      <etape>
+	<temps>14000</temps>
+	<pointX>500</pointX>
+	<pointY>100</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_2.png</texture>
+    <pointDeVie>20</pointDeVie>
+    <pointsRecompense>50</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>ALEATOIRE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>PARALLELE</nom>
+      <nombreMunition>2</nombreMunition>
+      <ecartMunition>8</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>500</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>1000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>12200</temps>
+	<pointX>150</pointX>
+	<pointY>900</pointY>
+      </etape>
+      <etape>
+	<temps>13200</temps>
+	<pointX>150</pointX>
+	<pointY>600</pointY>
+      </etape>
+      <etape>
+	<temps>14200</temps>
+	<pointX>-100</pointX>
+	<pointY>100</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_2.png</texture>
+    <pointDeVie>20</pointDeVie>
+    <pointsRecompense>50</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>ALEATOIRE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>PARALLELE</nom>
+      <nombreMunition>2</nombreMunition>
+      <ecartMunition>8</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>500</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>1000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>12200</temps>
+	<pointX>250</pointX>
+	<pointY>900</pointY>
+      </etape>
+      <etape>
+	<temps>13200</temps>
+	<pointX>250</pointX>
+	<pointY>600</pointY>
+      </etape>
+      <etape>
+	<temps>14200</temps>
+	<pointX>500</pointX>
+	<pointY>100</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_2.png</texture>
+    <pointDeVie>20</pointDeVie>
+    <pointsRecompense>50</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>ALEATOIRE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>PARALLELE</nom>
+      <nombreMunition>2</nombreMunition>
+      <ecartMunition>8</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>500</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>1000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>12400</temps>
+	<pointX>150</pointX>
+	<pointY>900</pointY>
+      </etape>
+      <etape>
+	<temps>13400</temps>
+	<pointX>150</pointX>
+	<pointY>600</pointY>
+      </etape>
+      <etape>
+	<temps>14400</temps>
+	<pointX>-100</pointX>
+	<pointY>100</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_2.png</texture>
+    <pointDeVie>20</pointDeVie>
+    <pointsRecompense>50</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>ALEATOIRE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>PARALLELE</nom>
+      <nombreMunition>2</nombreMunition>
+      <ecartMunition>8</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>500</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>1000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>12400</temps>
+	<pointX>250</pointX>
+	<pointY>900</pointY>
+      </etape>
+      <etape>
+	<temps>13400</temps>
+	<pointX>250</pointX>
+	<pointY>600</pointY>
+      </etape>
+      <etape>
+	<temps>14400</temps>
+	<pointX>500</pointX>
+	<pointY>100</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_2.png</texture>
+    <pointDeVie>20</pointDeVie>
+    <pointsRecompense>50</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>ALEATOIRE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>PARALLELE</nom>
+      <nombreMunition>2</nombreMunition>
+      <ecartMunition>8</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>500</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>1000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>12600</temps>
+	<pointX>150</pointX>
+	<pointY>900</pointY>
+      </etape>
+      <etape>
+	<temps>13600</temps>
+	<pointX>150</pointX>
+	<pointY>600</pointY>
+      </etape>
+      <etape>
+	<temps>14600</temps>
+	<pointX>-100</pointX>
+	<pointY>100</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_2.png</texture>
+    <pointDeVie>20</pointDeVie>
+    <pointsRecompense>50</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>ALEATOIRE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>PARALLELE</nom>
+      <nombreMunition>2</nombreMunition>
+      <ecartMunition>8</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>500</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>1000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>12600</temps>
+	<pointX>250</pointX>
+	<pointY>900</pointY>
+      </etape>
+      <etape>
+	<temps>13600</temps>
+	<pointX>250</pointX>
+	<pointY>600</pointY>
+      </etape>
+      <etape>
+	<temps>14600</temps>
+	<pointX>500</pointX>
+	<pointY>100</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_2.png</texture>
+    <pointDeVie>20</pointDeVie>
+    <pointsRecompense>50</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>ALEATOIRE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>PARALLELE</nom>
+      <nombreMunition>2</nombreMunition>
+      <ecartMunition>8</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>500</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>1000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>12800</temps>
+	<pointX>150</pointX>
+	<pointY>900</pointY>
+      </etape>
+      <etape>
+	<temps>13800</temps>
+	<pointX>150</pointX>
+	<pointY>600</pointY>
+      </etape>
+      <etape>
+	<temps>14800</temps>
+	<pointX>-100</pointX>
+	<pointY>100</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_2.png</texture>
+    <pointDeVie>20</pointDeVie>
+    <pointsRecompense>50</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>ALEATOIRE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>PARALLELE</nom>
+      <nombreMunition>2</nombreMunition>
+      <ecartMunition>8</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>500</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>1000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>12800</temps>
+	<pointX>250</pointX>
+	<pointY>900</pointY>
+      </etape>
+      <etape>
+	<temps>13800</temps>
+	<pointX>250</pointX>
+	<pointY>600</pointY>
+      </etape>
+      <etape>
+	<temps>14800</temps>
+	<pointX>500</pointX>
+	<pointY>100</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_2.png</texture>
+    <pointDeVie>20</pointDeVie>
+    <pointsRecompense>50</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>ALEATOIRE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>PARALLELE</nom>
+      <nombreMunition>2</nombreMunition>
+      <ecartMunition>8</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>500</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>1000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>13000</temps>
+	<pointX>150</pointX>
+	<pointY>900</pointY>
+      </etape>
+      <etape>
+	<temps>14000</temps>
+	<pointX>150</pointX>
+	<pointY>600</pointY>
+      </etape>
+      <etape>
+	<temps>15000</temps>
+	<pointX>-100</pointX>
+	<pointY>100</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_2.png</texture>
+    <pointDeVie>20</pointDeVie>
+    <pointsRecompense>50</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>ALEATOIRE</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>PARALLELE</nom>
+      <nombreMunition>2</nombreMunition>
+      <ecartMunition>8</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>500</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>1000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>13000</temps>
+	<pointX>250</pointX>
+	<pointY>900</pointY>
+      </etape>
+      <etape>
+	<temps>14000</temps>
+	<pointX>250</pointX>
+	<pointY>600</pointY>
+      </etape>
+      <etape>
+	<temps>15000</temps>
+	<pointX>500</pointX>
+	<pointY>100</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_3.png</texture>
+    <pointDeVie>50</pointDeVie>
+    <pointsRecompense>100</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>DROIT</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>EVENTAIL</nom>
+      <nombreMunition>4</nombreMunition>
+      <ecartMunition>5</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>200</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>2000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>18000</temps>
+	<pointX>-100</pointX>
+	<pointY>650</pointY>
+      </etape>
+      <etape>
+	<temps>26000</temps>
+	<pointX>500</pointX>
+	<pointY>650</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_3.png</texture>
+    <pointDeVie>50</pointDeVie>
+    <pointsRecompense>100</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>DROIT</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>EVENTAIL</nom>
+      <nombreMunition>4</nombreMunition>
+      <ecartMunition>5</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>200</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>2000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>18000</temps>
+	<pointX>500</pointX>
+	<pointY>550</pointY>
+      </etape>
+      <etape>
+	<temps>26000</temps>
+	<pointX>-100</pointX>
+	<pointY>550</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+  
+  <ennemi>
+    <texture>img/small_ennemi_1_3.png</texture>
+    <pointDeVie>50</pointDeVie>
+    <pointsRecompense>100</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>DROIT</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>EVENTAIL</nom>
+      <nombreMunition>4</nombreMunition>
+      <ecartMunition>5</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>200</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>2000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>22000</temps>
+	<pointX>-100</pointX>
+	<pointY>650</pointY>
+      </etape>
+      <etape>
+	<temps>30000</temps>
+	<pointX>500</pointX>
+	<pointY>650</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+  <ennemi>
+    <texture>img/small_ennemi_1_3.png</texture>
+    <pointDeVie>50</pointDeVie>
+    <pointsRecompense>100</pointsRecompense>
+    <!-- valeurs possibles : DROIT, VISE ou ALEATOIRE -->
+    <orientationTir>DROIT</orientationTir>
+    <typeArme>
+      <!-- valeurs possibles : TIR_UNIQUE, PARALLELE ou EVENTAIL-->
+      <!-- Si TIR_UNIQUE, aucun paramètre nécessaire. -->
+      <!-- Si PARALLELE, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en pixel. -->
+      <!-- Si EVENTAIL, 2 paramètres : nombre de munitions en -->
+      <!-- parallèle et l'écart entre elles en degré. -->
+      <nom>EVENTAIL</nom>
+      <nombreMunition>4</nombreMunition>
+      <ecartMunition>5</ecartMunition>
+    </typeArme>
+    <puissanceTir>100</puissanceTir>
+    <!-- Temps en millisecondes entre deux munitions tirées -->
+    <cadenceTir>200</cadenceTir>
+    <!-- Temps en millisecondes mis par une munition -->
+    <!-- pour traverser l'écran de bas en haut -->
+    <vitesseTir>2000</vitesseTir>
+    <evolutionSpatioTemporelle>
+      
+      <!-- A recopier autant de fois qu'il y a d'étapes -->
+      <!-- dans son évolution spatio temporelle -->
+      <etape>
+	<temps>22000</temps>
+	<pointX>500</pointX>
+	<pointY>550</pointY>
+      </etape>
+      <etape>
+	<temps>30000</temps>
+	<pointX>-100</pointX>
+	<pointY>550</pointY>
+      </etape>
+      
+    </evolutionSpatioTemporelle>
+  </ennemi>
+
+</scenario>
