@@ -40,7 +40,7 @@ public class CreationXML{
 			document.setXmlVersion("1.0");
 			document.setXmlStandalone(true);
 
-			//document.appendChild(document.createComment(" "));
+			//document.appendChild(document.createComment("ddd"));
 
 			Element racine = document.createElement("scenario");
 
@@ -70,48 +70,117 @@ public class CreationXML{
 			//background.setTextContent(" ");
 			joueur.appendChild(texture);
 
+			Element hitBox = document.createElement("hitBox");
+			//background.setTextContent(" ");
+			joueur.appendChild(hitBox);
+
 			Element pointDeVie = document.createElement("pointDeVie");
 			//background.setTextContent(" ");
 			joueur.appendChild(pointDeVie);
 
-			Element pointsRecompense = document.createElement("pointsRecompense");
+			Element vitesseDeplacement = document.createElement("vitesseDeplacement");
 			//background.setTextContent(" ");
-			joueur.appendChild(pointsRecompense);
+			joueur.appendChild(vitesseDeplacement);
 
-			Element orientationTir = document.createElement("orientationTir");
+			Element cadenceTir = document.createElement("cadenceTir");
 			//background.setTextContent(" ");
-			joueur.appendChild(orientationTir);
-
-			Element typeArme = document.createElement("typeArme");
-			//background.setTextContent(" ");
-
-			Element nom = document.createElement("nom");
-			//background.setTextContent(" ");
-			typeArme.appendChild(nom);
-
-			Element nombreMunition = document.createElement("nombreMunition");
-			//background.setTextContent(" ");
-			typeArme.appendChild(nombreMunition);
-
-			Element ecartMunition = document.createElement("ecartMunition");
-			//background.setTextContent(" ");
-			typeArme.appendChild(ecartMunition);
-
-			joueur.appendChild(typeArme);
+			joueur.appendChild(cadenceTir);
 
 			Element puissanceTir = document.createElement("puissanceTir");
 			//background.setTextContent(" ");
-			typeArme.appendChild(ecartMunition);
+			
 
-		
+			Element TIR_UNIQUE = document.createElement("TIR_UNIQUE");
+			//background.setTextContent(" ");
+			puissanceTir.appendChild(TIR_UNIQUE);
 
+			Element PARALLELE = document.createElement("PARALLELE");
+			//background.setTextContent(" ");
+			puissanceTir.appendChild(PARALLELE);
 
+			Element EVENTAIL = document.createElement("EVENTAIL");
+			//background.setTextContent(" ");
+			puissanceTir.appendChild(EVENTAIL);
+
+			joueur.appendChild(puissanceTir);
 
 			racine.appendChild(joueur);
 
-			document.appendChild(racine);
+			Element ennemi = document.createElement("ennemi");
+			//background.setTextContent(" ");
+			
+			Element textureE = document.createElement("texture");
+			//background.setTextContent(" ");
+			ennemi.appendChild(textureE);
+
+
+			Element pointsRecompense = document.createElement("pointsRecompense");
+			//background.setTextContent(" ");
+			ennemi.appendChild(pointsRecompense);
+
+			Element orientationTir = document.createElement("orientationTir");
+			//background.setTextContent(" ");
+			ennemi.appendChild(orientationTir);
+
+			Element typeArmeE = document.createElement("typeArme");
+			//background.setTextContent(" ");
+
+			Element nomE = document.createElement("nom");
+			//background.setTextContent(" ");
+			typeArmeE.appendChild(nomE);
+
+			Element nombreMunitionE = document.createElement("nombreMunition");
+			//background.setTextContent(" ");
+			typeArmeE.appendChild(nombreMunitionE);
+
+			Element ecartMunitionE = document.createElement("ecartMunition");
+			//background.setTextContent(" ");
+			typeArmeE.appendChild(ecartMunitionE);
+
+			ennemi.appendChild(typeArmeE);
+
+			Element puissanceTirE = document.createElement("puissanceTir");
+			//background.setTextContent(" ");
+			ennemi.appendChild(puissanceTirE);
+
+			Element cadenceTirE = document.createElement("cadenceTir");
+			//background.setTextContent(" ");
+			ennemi.appendChild(cadenceTirE);
+
+			Element vitesseTirE = document.createElement("vitesseTir");
+			//background.setTextContent(" ");
+			ennemi.appendChild(vitesseTirE);
+
+			Element evolutionSpatioTemporelle = document.createElement("evolutionSpatioTemporelle");
+			//background.setTextContent(" ");
+
+			Element etape = document.createElement("vitesseTir");
+			//background.setTextContent(" ");
+
+			Element temps = document.createElement("temps");
+			//background.setTextContent(" ");
+			evolutionSpatioTemporelle.appendChild(temps);
+
+			Element pointXspa = document.createElement("pointX");
+			//background.setTextContent(" ");
+			evolutionSpatioTemporelle.appendChild(pointXspa);
+
+			Element pointYspa = document.createElement("pointY");
+			//background.setTextContent(" ");
+			evolutionSpatioTemporelle.appendChild(pointXspa);
+
+
+
+			evolutionSpatioTemporelle.appendChild(etape);
+
+
+			ennemi.appendChild(evolutionSpatioTemporelle);
 			
 
+			racine.appendChild(ennemi);
+
+			document.appendChild(racine);
+			
 			transformerXml(document, "./NouveauNiveau.xml");
 		}catch(Exception e){
 			e.printStackTrace();
