@@ -36,6 +36,8 @@ public class CreationXML{
 			DocumentBuilderFactory fabrique = DocumentBuilderFactory.newInstance();
 			DocumentBuilder constructeur = fabrique.newDocumentBuilder();
 			Document document = constructeur.newDocument();
+			Element ennemi,textureE,pointsRecompense,orientationTir,typeArmeE,nomE,nombreMunitionE,
+			ecartMunitionE,puissanceTirE,cadenceTirE,vitesseTirE,evolutionSpatioTemporelle,etape,temps,pointXspa,pointYspa;
 
 			document.setXmlVersion("1.0");
 			document.setXmlStandalone(true);
@@ -105,67 +107,67 @@ public class CreationXML{
 			joueur.appendChild(puissanceTir);
 
 			racine.appendChild(joueur);
-
-			Element ennemi = document.createElement("ennemi");
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			ennemi = document.createElement("ennemi");
 			//background.setTextContent(" ");
 			
-			Element textureE = document.createElement("texture");
+			textureE = document.createElement("texture");
 			//background.setTextContent(" ");
 			ennemi.appendChild(textureE);
 
 
-			Element pointsRecompense = document.createElement("pointsRecompense");
+			pointsRecompense = document.createElement("pointsRecompense");
 			//background.setTextContent(" ");
 			ennemi.appendChild(pointsRecompense);
 
-			Element orientationTir = document.createElement("orientationTir");
+			orientationTir = document.createElement("orientationTir");
 			//background.setTextContent(" ");
 			ennemi.appendChild(orientationTir);
 
-			Element typeArmeE = document.createElement("typeArme");
+			typeArmeE = document.createElement("typeArme");
 			//background.setTextContent(" ");
 
-			Element nomE = document.createElement("nom");
+			nomE = document.createElement("nom");
 			//background.setTextContent(" ");
 			typeArmeE.appendChild(nomE);
 
-			Element nombreMunitionE = document.createElement("nombreMunition");
+			nombreMunitionE = document.createElement("nombreMunition");
 			//background.setTextContent(" ");
 			typeArmeE.appendChild(nombreMunitionE);
 
-			Element ecartMunitionE = document.createElement("ecartMunition");
+			ecartMunitionE = document.createElement("ecartMunition");
 			//background.setTextContent(" ");
 			typeArmeE.appendChild(ecartMunitionE);
 
 			ennemi.appendChild(typeArmeE);
 
-			Element puissanceTirE = document.createElement("puissanceTir");
+			puissanceTirE = document.createElement("puissanceTir");
 			//background.setTextContent(" ");
 			ennemi.appendChild(puissanceTirE);
 
-			Element cadenceTirE = document.createElement("cadenceTir");
+			cadenceTirE = document.createElement("cadenceTir");
 			//background.setTextContent(" ");
 			ennemi.appendChild(cadenceTirE);
 
-			Element vitesseTirE = document.createElement("vitesseTir");
+			vitesseTirE = document.createElement("vitesseTir");
 			//background.setTextContent(" ");
 			ennemi.appendChild(vitesseTirE);
 
-			Element evolutionSpatioTemporelle = document.createElement("evolutionSpatioTemporelle");
+			evolutionSpatioTemporelle = document.createElement("evolutionSpatioTemporelle");
 			//background.setTextContent(" ");
 
-			Element etape = document.createElement("vitesseTir");
+			etape = document.createElement("vitesseTir");
 			//background.setTextContent(" ");
 
-			Element temps = document.createElement("temps");
+			temps = document.createElement("temps");
 			//background.setTextContent(" ");
 			evolutionSpatioTemporelle.appendChild(temps);
 
-			Element pointXspa = document.createElement("pointX");
+			pointXspa = document.createElement("pointX");
 			//background.setTextContent(" ");
 			evolutionSpatioTemporelle.appendChild(pointXspa);
 
-			Element pointYspa = document.createElement("pointY");
+			pointYspa = document.createElement("pointY");
 			//background.setTextContent(" ");
 			evolutionSpatioTemporelle.appendChild(pointXspa);
 
@@ -178,7 +180,80 @@ public class CreationXML{
 			
 
 			racine.appendChild(ennemi);
+			/////////////////////////////////////////////////////////
+			ennemi = document.createElement("ennemi");
+			//background.setTextContent(" ");
+			
+			textureE = document.createElement("texture");
+			//background.setTextContent(" ");
+			ennemi.appendChild(textureE);
 
+
+			pointsRecompense = document.createElement("pointsRecompense");
+			//background.setTextContent(" ");
+			ennemi.appendChild(pointsRecompense);
+
+			orientationTir = document.createElement("orientationTir");
+			//background.setTextContent(" ");
+			ennemi.appendChild(orientationTir);
+
+			typeArmeE = document.createElement("typeArme");
+			//background.setTextContent(" ");
+
+			nomE = document.createElement("nom");
+			//background.setTextContent(" ");
+			typeArmeE.appendChild(nomE);
+
+			nombreMunitionE = document.createElement("nombreMunition");
+			//background.setTextContent(" ");
+			typeArmeE.appendChild(nombreMunitionE);
+
+			ecartMunitionE = document.createElement("ecartMunition");
+			//background.setTextContent(" ");
+			typeArmeE.appendChild(ecartMunitionE);
+
+			ennemi.appendChild(typeArmeE);
+
+			puissanceTirE = document.createElement("puissanceTir");
+			//background.setTextContent(" ");
+			ennemi.appendChild(puissanceTirE);
+
+			cadenceTirE = document.createElement("cadenceTir");
+			//background.setTextContent(" ");
+			ennemi.appendChild(cadenceTirE);
+
+			vitesseTirE = document.createElement("vitesseTir");
+			//background.setTextContent(" ");
+			ennemi.appendChild(vitesseTirE);
+
+			evolutionSpatioTemporelle = document.createElement("evolutionSpatioTemporelle");
+			//background.setTextContent(" ");
+
+			etape = document.createElement("vitesseTir");
+			//background.setTextContent(" ");
+
+			temps = document.createElement("temps");
+			//background.setTextContent(" ");
+			evolutionSpatioTemporelle.appendChild(temps);
+
+			pointXspa = document.createElement("pointX");
+			//background.setTextContent(" ");
+			evolutionSpatioTemporelle.appendChild(pointXspa);
+
+			pointYspa = document.createElement("pointY");
+			//background.setTextContent(" ");
+			evolutionSpatioTemporelle.appendChild(pointXspa);
+
+
+
+			evolutionSpatioTemporelle.appendChild(etape);
+
+
+			ennemi.appendChild(evolutionSpatioTemporelle);
+			
+
+			racine.appendChild(ennemi);
+			/////////////////////////////////////////////////////////	
 			document.appendChild(racine);
 			
 			transformerXml(document, "./NouveauNiveau.xml");
