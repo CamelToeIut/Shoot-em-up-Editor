@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import MG2D.*;
 import MG2D.geometrie.*;
 
-
-
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
