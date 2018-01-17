@@ -29,9 +29,11 @@
         <cadenceTir/>
         <vitesseTir/>
         <evolutionSpatioTemporelle>
-            <temps/>
-            <pointX/>
-            <vitesseTir/>
+            <etape>
+                <temps/>
+                <pointX/>
+                <pointY/>
+            </etape>
         </evolutionSpatioTemporelle>
     </ennemi>
     <ennemi>
@@ -47,9 +49,11 @@
         <cadenceTir/>
         <vitesseTir/>
         <evolutionSpatioTemporelle>
-            <temps/>
-            <pointX/>
-            <vitesseTir/>
+            <etape>
+                <temps/>
+                <pointX/>
+                <pointY/>
+            </etape>
         </evolutionSpatioTemporelle>
     </ennemi>
     <ennemi>
@@ -65,9 +69,11 @@
         <cadenceTir/>
         <vitesseTir/>
         <evolutionSpatioTemporelle>
-            <temps/>
-            <pointX/>
-            <vitesseTir/>
+            <etape>
+                <temps/>
+                <pointX/>
+                <pointY/>
+            </etape>
         </evolutionSpatioTemporelle>
     </ennemi>
     <ennemi>
@@ -83,9 +89,11 @@
         <cadenceTir/>
         <vitesseTir/>
         <evolutionSpatioTemporelle>
-            <temps/>
-            <pointX/>
-            <vitesseTir/>
+            <etape>
+                <temps/>
+                <pointX/>
+                <pointY/>
+            </etape>
         </evolutionSpatioTemporelle>
     </ennemi>
     <ennemi>
@@ -101,9 +109,11 @@
         <cadenceTir/>
         <vitesseTir/>
         <evolutionSpatioTemporelle>
-            <temps/>
-            <pointX/>
-            <vitesseTir/>
+            <etape>
+                <temps/>
+                <pointX/>
+                <pointY/>
+            </etape>
         </evolutionSpatioTemporelle>
     </ennemi>
     <ennemi>
@@ -119,9 +129,11 @@
         <cadenceTir/>
         <vitesseTir/>
         <evolutionSpatioTemporelle>
-            <temps/>
-            <pointX/>
-            <vitesseTir/>
+            <etape>
+                <temps/>
+                <pointX/>
+                <pointY/>
+            </etape>
         </evolutionSpatioTemporelle>
     </ennemi>
 </scenario>

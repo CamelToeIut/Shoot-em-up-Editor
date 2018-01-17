@@ -163,24 +163,21 @@ public class CreationXML{
 
 				evolutionSpatioTemporelle = document.createElement("evolutionSpatioTemporelle");
 				//background.setTextContent(" ");
-
-				etape = document.createElement("vitesseTir");
+				
+				etape = document.createElement("etape");
 				//background.setTextContent(" ");
 
 				temps = document.createElement("temps");
 				//background.setTextContent(" ");
-				evolutionSpatioTemporelle.appendChild(temps);
+				etape.appendChild(temps);
 
 				pointXspa = document.createElement("pointX");
 				//background.setTextContent(" ");
-				evolutionSpatioTemporelle.appendChild(pointXspa);
+				etape.appendChild(pointXspa);
 
 				pointYspa = document.createElement("pointY");
 				//background.setTextContent(" ");
-				evolutionSpatioTemporelle.appendChild(pointXspa);
-
-
-
+				etape.appendChild(pointYspa);
 				evolutionSpatioTemporelle.appendChild(etape);
 
 
