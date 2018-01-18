@@ -21,12 +21,14 @@ public class Main{
 		Snake serpent = new Snake();
 		Clavier clavier = new Clavier();
 		clavier = f.getClavier();
-		String direction = new String("S");
+		String direction = new String("B");
 		int compteur=0;
-
+		boolean pomme=false;
 		int posx = 1;
 		int posy = 1;
-		
+		int taille=3, score=0;
+		int randomx=0,randomy=0;
+
 		ArrayList<Rectangle> grilledejeu = new ArrayList<>();
 		ArrayList<Position> serpentpos = new ArrayList<>();
 		
@@ -67,19 +69,19 @@ public class Main{
 
 			//posxtest++;
 
-		if (clavier.getHaut()){
+		if (clavier.getHautEnfoncee()){
 			direction="H";
 		}
 		
-		if (clavier.getBas()){
+		if (clavier.getBasEnfoncee()){
 			direction="B";
 		}
 				
-		if (clavier.getDroite()){		
+		if (clavier.getDroiteEnfoncee()){		
 			direction="D";	
 		}
 
-		if (clavier.getGauche()){
+		if (clavier.getGaucheEnfoncee()){
 			direction="G";	
 		}
 							
@@ -131,7 +133,7 @@ public class Main{
 			try{
 			matrice_grille[serpentpos.get(i).getPositionX()][serpentpos.get(i).getPositionY()]=1;
 			//while(serpentpos.size()>3){
-				for(int j=0; j<serpentpos.size()-3; j++){
+				for(int j=0; j<serpentpos.size()-taille; j++){
 					matrice_grille[serpentpos.get(j).getPositionX()][serpentpos.get(j).getPositionY()]=0;
 					serpentpos.remove(j);
 					
@@ -142,11 +144,22 @@ public class Main{
 				
 		}		
 
-		}catch(ArrayIndexOutOfBoundsException e){}
-		
-			
+		}catch(ArrayIndexOutOfBoundsException e){System.exit(1);}
 
-			
+		if (pomme==false){
+			randomx = ((int)(Math.random() * (20)));
+			randomy = ((int)(Math.random() * (20)));
+			matrice_grille[randomx][randomy]=2;
+			pomme=true;
+
+		}
+		if(matrice_grille[randomx][randomy]==1){
+			pomme=false;
+			score=score+100;
+			taille++;
+		}
+
+		System.out.println(score);	
 			for(int i=0; i<20; i++){
 				for(int j=0; j<20; j++){
 					
@@ -161,6 +174,16 @@ public class Main{
 						grilledejeu.get((maxV*i)+j).setPlein(false);
 	
 					}
+
+					if(matrice_grille[i][j]==2){
+						grilledejeu.get((maxV*i)+j).setCouleur(Couleur.ROUGE);	
+						grilledejeu.get((maxV*i)+j).setPlein(true);
+				
+						
+	
+					}
+					
+	
 				
 				}
 			}
