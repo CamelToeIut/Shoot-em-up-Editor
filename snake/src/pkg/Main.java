@@ -73,10 +73,13 @@ public class Main{
 			direction="H";
 		}
 		
-		if (clavier.getBasEnfoncee()){
-			direction="B";
+		if(!direction.equals("H")){
+		
+			if (clavier.getBasEnfoncee()){
+				direction="B";
+			}
 		}
-				
+		
 		if (clavier.getDroiteEnfoncee()){		
 			direction="D";	
 		}
@@ -84,7 +87,8 @@ public class Main{
 		if (clavier.getGaucheEnfoncee()){
 			direction="G";	
 		}
-							
+		
+					
 		
 		System.out.println(direction);
 		//System.out.println(posx);
