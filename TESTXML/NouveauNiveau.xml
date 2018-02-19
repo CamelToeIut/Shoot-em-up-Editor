@@ -17,4 +17,64 @@
             <EVENTAIL/>
         </puissanceTir>
     </joueur>
+    <ennemi>
+        <texture>test </texture>
+        <pointsRecompense>dude</pointsRecompense>
+        <orientationTir/>
+        <typeArme>
+            <nom/>
+            <nombreMunition/>
+            <ecartMunition/>
+        </typeArme>
+        <puissanceTir/>
+        <cadenceTir/>
+        <vitesseTir/>
+        <evolutionSpatioTemporelle>
+            <etape>
+                <temps/>
+                <pointX/>
+                <pointY/>
+            </etape>
+        </evolutionSpatioTemporelle>
+    </ennemi>
+    <ennemi>
+        <texture>test </texture>
+        <pointsRecompense>dude</pointsRecompense>
+        <orientationTir/>
+        <typeArme>
+            <nom/>
+            <nombreMunition/>
+            <ecartMunition/>
+        </typeArme>
+        <puissanceTir/>
+        <cadenceTir/>
+        <vitesseTir/>
+        <evolutionSpatioTemporelle>
+            <etape>
+                <temps/>
+                <pointX/>
+                <pointY/>
+            </etape>
+        </evolutionSpatioTemporelle>
+    </ennemi>
+    <ennemi>
+        <texture>test </texture>
+        <pointsRecompense>dude</pointsRecompense>
+        <orientationTir/>
+        <typeArme>
+            <nom/>
+            <nombreMunition/>
+            <ecartMunition/>
+        </typeArme>
+        <puissanceTir/>
+        <cadenceTir/>
+        <vitesseTir/>
+        <evolutionSpatioTemporelle>
+            <etape>
+                <temps/>
+                <pointX/>
+                <pointY/>
+            </etape>
+        </evolutionSpatioTemporelle>
+    </ennemi>
 </scenario>

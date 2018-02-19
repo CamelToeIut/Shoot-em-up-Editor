@@ -39,14 +39,36 @@ public class CreationXML{
 			DocumentBuilder constructeur = fabrique.newDocumentBuilder();
 			Document document = constructeur.newDocument();
 			Element ennemi,textureE,pointsRecompense,orientationTir,typeArmeE,nomE,nombreMunitionE,
-			ecartMunitionE,puissanceTirE,cadenceTirE,vitesseTirE,evolutionSpatioTemporelle,etape,temps,pointXspa,pointYspa;
+			ecartMunitionE,puissanceTirE,cadenceTirE,vitesseTirE,
+			evolutionSpatioTemporelle,etape,temps,pointXspa,pointYspa;
+		
+		
 			ArrayList<Ennemi> listeEnnemi = new ArrayList<>();
-			listeEnnemi.add(new Ennemi("img/avion1.png",1,1,1,1,1,1,1,1,new ArrayList<Point>(),new ArrayList<Long>(),1,1,1));
-			listeEnnemi.add(new Ennemi("img/avion1.png",1,1,1,1,1,1,1,1,new ArrayList<Point>(),new ArrayList<Long>(),1,1,1));
-			listeEnnemi.add(new Ennemi("img/avion1.png",1,1,1,1,1,1,1,1,new ArrayList<Point>(),new ArrayList<Long>(),1,1,1));
-			listeEnnemi.add(new Ennemi("img/avion1.png",1,1,1,1,1,1,1,1,new ArrayList<Point>(),new ArrayList<Long>(),1,1,1));
-			listeEnnemi.add(new Ennemi("img/avion1.png",1,1,1,1,1,1,1,1,new ArrayList<Point>(),new ArrayList<Long>(),1,1,1));
-			listeEnnemi.add(new Ennemi("img/avion1.png",1,1,1,1,1,1,1,1,new ArrayList<Point>(),new ArrayList<Long>(),1,1,1));
+			ArrayList<Point> posEnnemi = new ArrayList<>();
+			ArrayList<Long> tpsPosEnnemi = new ArrayList<>();
+			/////////////////////////////////////////////////
+			posEnnemi.add(new Point(25,25));
+			posEnnemi.add(new Point(25,25));
+			posEnnemi.add(new Point(25,25));
+			posEnnemi.add(new Point(25,25));
+			posEnnemi.add(new Point(25,25));
+			posEnnemi.add(new Point(25,25));
+			posEnnemi.add(new Point(25,25));
+			////////////////////////////////////////////////
+			tpsPosEnnemi.add(new Long(900));
+			tpsPosEnnemi.add(new Long(900));
+			tpsPosEnnemi.add(new Long(900));
+			tpsPosEnnemi.add(new Long(900));
+			tpsPosEnnemi.add(new Long(900));
+			tpsPosEnnemi.add(new Long(900));
+			////////////////////////////////////////////////
+			listeEnnemi.add(new Ennemi("img/avion1.png",1,1,1,1,1,1,1,1,posEnnemi,tpsPosEnnemi,1,1,1));
+			listeEnnemi.add(new Ennemi("img/avion1.png",1,1,1,1,1,1,1,1,posEnnemi,tpsPosEnnemi,1,1,1));
+			listeEnnemi.add(new Ennemi("img/avion1.png",1,1,1,1,1,1,1,1,posEnnemi,tpsPosEnnemi,1,1,1));
+			listeEnnemi.add(new Ennemi("img/avion1.png",1,1,1,1,1,1,1,1,posEnnemi,tpsPosEnnemi,1,1,1));
+			listeEnnemi.add(new Ennemi("img/avion1.png",1,1,1,1,1,1,1,1,posEnnemi,tpsPosEnnemi,1,1,1));
+			listeEnnemi.add(new Ennemi("img/avion1.png",1,1,1,1,1,1,1,1,posEnnemi,tpsPosEnnemi,1,1,1));
+			
 			document.setXmlVersion("1.0");
 			document.setXmlStandalone(true);
 
@@ -160,106 +182,33 @@ public class CreationXML{
 				vitesseTirE = document.createElement("vitesseTir");
 				//background.setTextContent(" ");
 				ennemi.appendChild(vitesseTirE);
-
+				
 				evolutionSpatioTemporelle = document.createElement("evolutionSpatioTemporelle");
 				//background.setTextContent(" ");
+				for(int j=0;j<posEnnemi.size()-1;j++){
+					etape = document.createElement("etape");
+
+					temps = document.createElement("temps");
+					temps.setTextContent(Long.toString(listeEnnemi.get(i).getTpsIntervalle().get(j)));
+					etape.appendChild(temps);
+
+					pointXspa = document.createElement("pointX");
+					pointXspa.setTextContent(Integer.toString(listeEnnemi.get(i).getPositions().get(j).getX()));
+					etape.appendChild(pointXspa);
+
+					pointYspa = document.createElement("pointY");
+					pointYspa.setTextContent(Integer.toString(listeEnnemi.get(i).getPositions().get(j).getY()));
+					etape.appendChild(pointYspa);	
+					evolutionSpatioTemporelle.appendChild(etape);
+				}
 				
-				etape = document.createElement("etape");
-				//background.setTextContent(" ");
-
-				temps = document.createElement("temps");
-				//background.setTextContent(" ");
-				etape.appendChild(temps);
-
-				pointXspa = document.createElement("pointX");
-				//background.setTextContent(" ");
-				etape.appendChild(pointXspa);
-
-				pointYspa = document.createElement("pointY");
-				//background.setTextContent(" ");
-				etape.appendChild(pointYspa);
-				evolutionSpatioTemporelle.appendChild(etape);
-
 
 				ennemi.appendChild(evolutionSpatioTemporelle);
 			
 
 				racine.appendChild(ennemi);
 			}
-/*///////////////////////////////////////////////////////////////////////////////////////////////////////////
-			ennemi = document.createElement("ennemi");
-			//background.setTextContent(" ");
-			
-			textureE = document.createElement("texture");
-			//background.setTextContent(" ");
-			ennemi.appendChild(textureE);
 
-
-			pointsRecompense = document.createElement("pointsRecompense");
-			//background.setTextContent(" ");
-			ennemi.appendChild(pointsRecompense);
-
-			orientationTir = document.createElement("orientationTir");
-			//background.setTextContent(" ");
-			ennemi.appendChild(orientationTir);
-
-			typeArmeE = document.createElement("typeArme");
-			//background.setTextContent(" ");
-
-			nomE = document.createElement("nom");
-			//background.setTextContent(" ");
-			typeArmeE.appendChild(nomE);
-
-			nombreMunitionE = document.createElement("nombreMunition");
-			//background.setTextContent(" ");
-			typeArmeE.appendChild(nombreMunitionE);
-
-			ecartMunitionE = document.createElement("ecartMunition");
-			//background.setTextContent(" ");
-			typeArmeE.appendChild(ecartMunitionE);
-
-			ennemi.appendChild(typeArmeE);
-
-			puissanceTirE = document.createElement("puissanceTir");
-			//background.setTextContent(" ");
-			ennemi.appendChild(puissanceTirE);
-
-			cadenceTirE = document.createElement("cadenceTir");
-			//background.setTextContent(" ");
-			ennemi.appendChild(cadenceTirE);
-
-			vitesseTirE = document.createElement("vitesseTir");
-			//background.setTextContent(" ");
-			ennemi.appendChild(vitesseTirE);
-
-			evolutionSpatioTemporelle = document.createElement("evolutionSpatioTemporelle");
-			//background.setTextContent(" ");
-
-			etape = document.createElement("vitesseTir");
-			//background.setTextContent(" ");
-
-			temps = document.createElement("temps");
-			//background.setTextContent(" ");
-			evolutionSpatioTemporelle.appendChild(temps);
-
-			pointXspa = document.createElement("pointX");
-			//background.setTextContent(" ");
-			evolutionSpatioTemporelle.appendChild(pointXspa);
-
-			pointYspa = document.createElement("pointY");
-			//background.setTextContent(" ");
-			evolutionSpatioTemporelle.appendChild(pointXspa);
-
-
-
-			evolutionSpatioTemporelle.appendChild(etape);
-
-
-			ennemi.appendChild(evolutionSpatioTemporelle);
-			
-
-			racine.appendChild(ennemi);
-			////////////////////////////////////////////////////////*/	
 			document.appendChild(racine);
 			
 			transformerXml(document, "./NouveauNiveau.xml");

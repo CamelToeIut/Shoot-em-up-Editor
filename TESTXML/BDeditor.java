@@ -29,7 +29,7 @@ public class BDeditor{
 		constructeur=fabrique.newDocumentBuilder();
 		document=constructeur.newDocument();
 		
-		Element racine = document.createElement("scenario");
+		racine = document.createElement("scenario");
 
 		Element FPS = document.createElement("FPS");
 		racine.appendChild(FPS);
@@ -123,9 +123,73 @@ public class BDeditor{
         	e.printStackTrace();	
         	}
     	}
-
+	// Méthode qui ajoute un ennemi
 	public void nouveauEnnemi(){
-			
+		ennemi = document.createElement("ennemi");
+				
+		textureE = document.createElement("texture");
+		textureE.setTextContent("test ");
+		ennemi.appendChild(textureE);
+
+
+		pointsRecompense = document.createElement("pointsRecompense");
+		pointsRecompense.setTextContent("dude");
+		ennemi.appendChild(pointsRecompense);
+
+		orientationTir = document.createElement("orientationTir");
+		//background.setTextContent(" ");
+		ennemi.appendChild(orientationTir);
+
+		typeArmeE = document.createElement("typeArme");
+		//background.setTextContent(" ");
+
+		nomE = document.createElement("nom");
+		//background.setTextContent(" ");
+		typeArmeE.appendChild(nomE);
+
+		nombreMunitionE = document.createElement("nombreMunition");
+		//background.setTextContent(" ");
+		typeArmeE.appendChild(nombreMunitionE);
+
+		ecartMunitionE = document.createElement("ecartMunition");
+		//background.setTextContent(" ");
+		typeArmeE.appendChild(ecartMunitionE);
+
+		ennemi.appendChild(typeArmeE);
+
+		puissanceTirE = document.createElement("puissanceTir");
+		//background.setTextContent(" ");
+		ennemi.appendChild(puissanceTirE);
+
+		cadenceTirE = document.createElement("cadenceTir");
+		//background.setTextContent(" ");
+		ennemi.appendChild(cadenceTirE);
+
+		vitesseTirE = document.createElement("vitesseTir");
+		//background.setTextContent(" ");
+		ennemi.appendChild(vitesseTirE);
+				
+		evolutionSpatioTemporelle = document.createElement("evolutionSpatioTemporelle");
+		//background.setTextContent(" ");
+				
+		etape = document.createElement("etape");
+
+		temps = document.createElement("temps");
+		temps.setTextContent("");
+		etape.appendChild(temps);
+
+		pointXspa = document.createElement("pointX");
+		pointXspa.setTextContent("");
+		etape.appendChild(pointXspa);
+
+		pointYspa = document.createElement("pointY");
+		pointYspa.setTextContent("");
+		etape.appendChild(pointYspa);	
+		evolutionSpatioTemporelle.appendChild(etape);
+		
+		ennemi.appendChild(evolutionSpatioTemporelle);
+
+		racine.appendChild(ennemi);	
 	}
 
 	public void modifierEnnemi(){
