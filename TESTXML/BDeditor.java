@@ -193,11 +193,11 @@ public class BDeditor{
 	}
 
 	public void modifierEnnemi(){
-
+		
 	}
 
 	public void supprimerEnnemi(){
-
+		racine.removeChild(ennemi);
 	}
 
 	public void ajoutTempo(){

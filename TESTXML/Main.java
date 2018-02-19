@@ -8,14 +8,15 @@ public class Main{
 		while(aoub){
 			System.out.println("A ou laisse passer");
 			Scanner sc = new Scanner(System.in);
-			String va = sc.next();
-			if(va=="a"){
+			int va = sc.nextInt();
+			if(va==1){
 				test.nouveauEnnemi();
 			}else{
 				aoub = false;
 			}
 			
 		}
+		test.supprimerEnnemi();
 		test.EnregistrerFichier();
 	
 	}
