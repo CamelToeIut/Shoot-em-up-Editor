@@ -16,7 +16,7 @@ import MG2D.geometrie.*;
 import Jeu.*;
 
 public class BDeditor{
-		
+	Element background;
 	Element racine, ennemi,textureE,pointsRecompense,
 		orientationTir,typeArmeE,nomE,nombreMunitionE,
 		ecartMunitionE,puissanceTirE,cadenceTirE,vitesseTirE,
@@ -31,6 +31,8 @@ public class BDeditor{
 	ArrayList<Point> posEnnemi = new ArrayList<>();
 	ArrayList<Long> tpsPosEnnemi = new ArrayList<>();
 
+	Joueur j;
+
 	public BDeditor(){
 		
 		try{
@@ -43,7 +45,7 @@ public class BDeditor{
 		Element FPS = document.createElement("FPS");
 		racine.appendChild(FPS);
 
-		Element background = document.createElement("background");
+		background = document.createElement("background");
 		//background.setTextContent(" ");
 		racine.appendChild(background);
 
@@ -137,6 +139,10 @@ public class BDeditor{
 		listeEnnemi.add(new Ennemi(str,ppointDeVie,vvitesseTir,ccadenceTir,ppuissanceTir,oorientationTir,ttypeArme,ttypeArmeNbMunition,
 		ttypeArmeEcartMunition,ppositions,ttempsIntermediaires,ppointsRecompense,ttailleX,ttailleY));
 	}
+	public void initialiserJoueur(String str, Point p, int ppointDeVie, int vvitesseDeplacement, int vvitesseTir, long ccadenceTir, int ppuissanceTirUnique, int ppuissanceTirParallele, int ppuissanceTirEventail, int ttailleX, int ttailleY){
+		j = new Joueur(str, p, ppointDeVie, vvitesseDeplacement, vvitesseTir, ccadenceTir, ppuissanceTirUnique, 
+		ppuissanceTirParallele, ppuissanceTirEventail, ttailleX, ttailleY);
+	}
 
 	public void modifierEnnemi(){
 		
@@ -159,11 +165,53 @@ public class BDeditor{
 		posEnnemi.remove(i);
 		tpsPosEnnemi.remove(i);
 	}
+	
+	public void ajoutJoueurXML(Joueur j){
+		Element joueur = document.createElement("joueur");
+	
+		Element texture = document.createElement("texture");
+		background.setTextContent("bite");
+		joueur.appendChild(texture);
 
+		Element hitBox = document.createElement("hitBox");
+		//background.setTextContent(" ");
+		joueur.appendChild(hitBox);
 
-	public void EnregistrerFichier(){
+		Element pointDeVie = document.createElement("pointDeVie");
+		//background.setTextContent(" ");
+		joueur.appendChild(pointDeVie);
+
+		Element vitesseDeplacement = document.createElement("vitesseDeplacement");
+		//background.setTextContent(" ");
+		joueur.appendChild(vitesseDeplacement);
+
+		Element cadenceTir = document.createElement("cadenceTir");
+		//background.setTextContent(" ");
+		joueur.appendChild(cadenceTir);
+
+		Element puissanceTir = document.createElement("puissanceTir");
+		//background.setTextContent(" ");
+			
+		Element TIR_UNIQUE = document.createElement("TIR_UNIQUE");
+		//background.setTextContent(" ");
+		puissanceTir.appendChild(TIR_UNIQUE);
+
+		Element PARALLELE = document.createElement("PARALLELE");
+		//background.setTextContent(" ");
+		puissanceTir.appendChild(PARALLELE);
+
+		Element EVENTAIL = document.createElement("EVENTAIL");
+		//background.setTextContent(" ");
+		puissanceTir.appendChild(EVENTAIL);
+
+		joueur.appendChild(puissanceTir);
+
+		racine.appendChild(joueur);
+	}
+
+	public void EnregistrerFichier(String s){
 		
 	    		System.out.println("Sauvegarde..");
-			transformerXml(document, "./NouveauNiveau.xml");
+			transformerXml(document, s.concat(".xml"));
 	}
 }
