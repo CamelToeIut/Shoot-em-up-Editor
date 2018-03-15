@@ -10,6 +10,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import MG2D.geometrie.*;
 
 public class BDeditor{
 		
@@ -23,7 +24,12 @@ public class BDeditor{
 	DocumentBuilder constructeur;
 	Document document;
 
+	ArrayList<Ennemi> listeEnnemi = new ArrayList<>();
+	ArrayList<Point> posEnnemi = new ArrayList<>();
+	ArrayList<Long> tpsPosEnnemi = new ArrayList<>();
+
 	public BDeditor(){
+		
 		try{
 		fabrique = DocumentBuilderFactory.newInstance();
 		constructeur=fabrique.newDocumentBuilder();
@@ -124,98 +130,36 @@ public class BDeditor{
         	}
     	}
 	// Méthode qui ajoute un ennemi
-	public void nouveauEnnemi(){
-		ennemi = document.createElement("ennemi");
-				
-		textureE = document.createElement("texture");
-		textureE.setTextContent("test ");
-		ennemi.appendChild(textureE);
-
-
-		pointsRecompense = document.createElement("pointsRecompense");
-		pointsRecompense.setTextContent("dude");
-		ennemi.appendChild(pointsRecompense);
-
-		orientationTir = document.createElement("orientationTir");
-		//background.setTextContent(" ");
-		ennemi.appendChild(orientationTir);
-
-		typeArmeE = document.createElement("typeArme");
-		//background.setTextContent(" ");
-
-		nomE = document.createElement("nom");
-		//background.setTextContent(" ");
-		typeArmeE.appendChild(nomE);
-
-		nombreMunitionE = document.createElement("nombreMunition");
-		//background.setTextContent(" ");
-		typeArmeE.appendChild(nombreMunitionE);
-
-		ecartMunitionE = document.createElement("ecartMunition");
-		//background.setTextContent(" ");
-		typeArmeE.appendChild(ecartMunitionE);
-
-		ennemi.appendChild(typeArmeE);
-
-		puissanceTirE = document.createElement("puissanceTir");
-		//background.setTextContent(" ");
-		ennemi.appendChild(puissanceTirE);
-
-		cadenceTirE = document.createElement("cadenceTir");
-		//background.setTextContent(" ");
-		ennemi.appendChild(cadenceTirE);
-
-		vitesseTirE = document.createElement("vitesseTir");
-		//background.setTextContent(" ");
-		ennemi.appendChild(vitesseTirE);
-				
-		evolutionSpatioTemporelle = document.createElement("evolutionSpatioTemporelle");
-		//background.setTextContent(" ");
-				
-		etape = document.createElement("etape");
-
-		temps = document.createElement("temps");
-		temps.setTextContent("");
-		etape.appendChild(temps);
-
-		pointXspa = document.createElement("pointX");
-		pointXspa.setTextContent("");
-		etape.appendChild(pointXspa);
-
-		pointYspa = document.createElement("pointY");
-		pointYspa.setTextContent("");
-		etape.appendChild(pointYspa);	
-		evolutionSpatioTemporelle.appendChild(etape);
-		
-		ennemi.appendChild(evolutionSpatioTemporelle);
-
-		racine.appendChild(ennemi);	
+	public void ajouterEnnemi(String str, int ppointDeVie, int vvitesseTir, long ccadenceTir, int ppuissanceTir, int oorientationTir, int ttypeArme, int ttypeArmeNbMunition, int ttypeArmeEcartMunition, ArrayList<Point> ppositions, ArrayList<Long> ttempsIntermediaires, int ppointsRecompense, int ttailleX, int ttailleY){
+		listeEnnemi.add(String str, int ppointDeVie, int vvitesseTir, long ccadenceTir, int ppuissanceTir, int oorientationTir, int ttypeArme, int ttypeArmeNbMunition, int ttypeArmeEcartMunition, ArrayList<Point> ppositions, ArrayList<Long> ttempsIntermediaires, int ppointsRecompense, int ttailleX, int ttailleY);	
 	}
 
 	public void modifierEnnemi(){
 		
 	}
 
-	public void supprimerEnnemi(){
-		racine.removeChild(ennemi);
+	public void supprimerEnnemi(int i){
+		listeEnnemi.remove(i);
 	}
 
-	public void ajoutTempo(){
-	
+	public void ajoutTempo(Point p,Long l){
+		posEnnemi.add(p)
+		tpsPosEnnemi.add(l)
 	}
 
 	public void modifierTempo(){
 	
 	}
 	
-	public void supprimerTempo(){
-	
+	public void supprimerTempo(int i){
+		posEnnemi.remove(i)
+		tpsPosEnnemi.remove(i)
 	}
 
 
-	public void EnregistrerFichier(){
+	public void EnregistrerFichier(String s){
 		
 	    		System.out.println("Sauvegarde..");
-			transformerXml(document, "./NouveauNiveau.xml");
+			transformerXml(document, s.concat(".xml"));
 	}
 }

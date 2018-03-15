@@ -10,7 +10,7 @@ public class Main{
 			Scanner sc = new Scanner(System.in);
 			int va = sc.nextInt();
 			if(va==1){
-				test.nouveauEnnemi();
+				test.ajouterEnnemi();
 			}else{
 				aoub = false;
 			}
