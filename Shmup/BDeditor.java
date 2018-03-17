@@ -249,7 +249,7 @@ public class BDeditor{
 		document.appendChild(racine);
 	}
 	
-	public void EnregistrerFichier(String s){
+	public void enregistrerFichier(String s){
 		
 	    		System.out.println("Sauvegarde..");
 			transformerXml(document, s.concat(".xml"));
