@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<scenario>
+    <FPS/>
+    <background>img/avion1.png</background>
+    <vitesse_background/>
+    <tailleX/>
+    <tailleY/>
+    <joueur>
+        <texture/>
+        <hitBox/>
+        <pointDeVie/>
+        <vitesseDeplacement/>
+        <cadenceTir/>
+        <puissanceTir>
+            <TIR_UNIQUE/>
+            <PARALLELE/>
+            <EVENTAIL/>
+        </puissanceTir>
+    </joueur>
+</scenario>

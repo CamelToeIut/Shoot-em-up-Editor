@@ -1,4 +1,4 @@
-package Jeu;
+
 
 import MG2D.*;
 import MG2D.geometrie.*;

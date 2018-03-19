@@ -1,4 +1,4 @@
-package Jeu;
+
 
 import MG2D.geometrie.Rectangle;
 import MG2D.geometrie.Couleur;

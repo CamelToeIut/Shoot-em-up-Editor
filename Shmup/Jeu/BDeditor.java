@@ -1,4 +1,4 @@
-package Jeu;
+
 
 import javax.xml.parsers.*; 
 import org.w3c.dom.*; 
@@ -13,7 +13,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import MG2D.geometrie.*;
-import Jeu.*;
 
 public class BDeditor{
 	Element background;
