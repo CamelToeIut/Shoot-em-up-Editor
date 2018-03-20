@@ -186,7 +186,7 @@ public class LevelEditor extends JFrame implements ActionListener{
      * Constructeur du menu
      * Permet de créer une barre de menu
      */
-    public BarreMenu(){
+    public LevelEditor(){
         /**
          * Paramétrage de la taille de la fenêtre, de son opération de fermeture par défaut 
          * et autorisation de la redimension
