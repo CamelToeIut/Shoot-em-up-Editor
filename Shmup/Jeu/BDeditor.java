@@ -16,12 +16,12 @@ import MG2D.geometrie.*;
 
 public class BDeditor{
 	Element background;
-	Element racine, ennemi,textureE,pointsRecompense,
+	Element racine, ennemi,textureE,pointDeVieE,pointsRecompense,
 		orientationTir,typeArmeE,nomE,nombreMunitionE,
 		ecartMunitionE,puissanceTirE,cadenceTirE,vitesseTirE,
 		evolutionSpatioTemporelle,	
 		etape,temps,pointXspa,pointYspa;
-
+	Element texture, joueur, hitBox, pointDeVie, vitesseDeplacement, cadenceTir, puissanceTir, TIR_UNIQUE, PARALLELE, EVENTAIL;
 	DocumentBuilderFactory fabrique;
 	DocumentBuilder constructeur;
 	Document document;
@@ -38,26 +38,7 @@ public class BDeditor{
 		document=constructeur.newDocument();
 		
 		racine = document.createElement("scenario");
-
-		Element FPS = document.createElement("FPS");
-		racine.appendChild(FPS);
-
-		background = document.createElement("background");
-		//background.setTextContent(" ");
-		racine.appendChild(background);
-
-		Element vitesse_background = document.createElement("vitesse_background");
-		//background.setTextContent(" ");
-		racine.appendChild(vitesse_background);
-
-		Element tailleX = document.createElement("tailleX");
-		//background.setTextContent(" ");
-		racine.appendChild(tailleX);
-
-		Element tailleY = document.createElement("tailleY");
-		//background.setTextContent(" ");
-		racine.appendChild(tailleY);			
-
+		
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -87,16 +68,35 @@ public class BDeditor{
         	e.printStackTrace();	
         	}
     	}
+
+	public void parametreJeu(int IPS, String bg, int vb, int tX, int tY){
+
+		Element FPS = document.createElement("FPS");
+		FPS.setTextContent(Integer.toString(IPS));
+		racine.appendChild(FPS);
+
+		Element backgroundjeu = document.createElement("background");
+		backgroundjeu.setTextContent(bg);
+		racine.appendChild(backgroundjeu);
+
+		Element vitesse_background = document.createElement("vitesse_background");
+		vitesse_background.setTextContent(Integer.toString(vb));
+		racine.appendChild(vitesse_background);
+
+		Element tailleX = document.createElement("tailleX");
+		tailleX.setTextContent(Integer.toString(tX));
+		racine.appendChild(tailleX);
+
+		Element tailleY = document.createElement("tailleY");
+		tailleY.setTextContent(Integer.toString(tY));
+		racine.appendChild(tailleY);	
+	}
 	// Méthode qui ajoute un ennemi
 	public void ajouterEnnemi(String str, int ppointDeVie, int vvitesseTir, long ccadenceTir, int ppuissanceTir, int oorientationTir, int ttypeArme, int ttypeArmeNbMunition, int ttypeArmeEcartMunition, ArrayList<Point> ppositions, ArrayList<Long> ttempsIntermediaires, int ppointsRecompense, int ttailleX, int ttailleY){
-	
+		System.out.println("debut ajout ennemi");
 		listeEnnemi.add(new Ennemi(str,ppointDeVie,vvitesseTir,ccadenceTir,ppuissanceTir,oorientationTir,ttypeArme,ttypeArmeNbMunition,
 		ttypeArmeEcartMunition,ppositions,ttempsIntermediaires,ppointsRecompense,ttailleX,ttailleY));
-		
-	}
-	public void initialiserJoueur(String str, Point p, int ppointDeVie, int vvitesseDeplacement, int vvitesseTir, long ccadenceTir, int ppuissanceTirUnique, int ppuissanceTirParallele, int ppuissanceTirEventail, int ttailleX, int ttailleY){
-		j = new Joueur(str, p, ppointDeVie, vvitesseDeplacement, vvitesseTir, ccadenceTir, ppuissanceTirUnique, 
-		ppuissanceTirParallele, ppuissanceTirEventail, ttailleX, ttailleY);
+		System.out.println("ennemi ajouter");
 	}
 
 	public void modifierEnnemi(String str, int ppointDeVie, int vvitesseTir, long ccadenceTir, int ppuissanceTir, int oorientationTir, int ttypeArme, int ttypeArmeNbMunition, int ttypeArmeEcartMunition, ArrayList<Point> ppositions, ArrayList<Long> ttempsIntermediaires, int ppointsRecompense, int ttailleX, int ttailleY,int i){
@@ -129,42 +129,42 @@ public class BDeditor{
 		listeEnnemi.get(i).getTpsIntervalle().remove(j);
 	}
 	
-	public void ajoutJoueurXML(String s){
-		Element joueur = document.createElement("joueur");
+	public void ajoutJoueurXML(String t, String hb, int pv, int vd, int cd, int tu, int p, int e, int vt){
+		
+		joueur = document.createElement("joueur");
 	
-		Element texture = document.createElement("texture");
-		background.setTextContent(s);
+		texture = document.createElement("texture");
+		texture.setTextContent(t);
 		joueur.appendChild(texture);
 
-		Element hitBox = document.createElement("hitBox");
-		//background.setTextContent(" ");
+		hitBox = document.createElement("hitBox");
+		hitBox.setTextContent(hb);
 		joueur.appendChild(hitBox);
 
-		Element pointDeVie = document.createElement("pointDeVie");
-		//background.setTextContent(" ");
+		pointDeVie = document.createElement("pointDeVie");
+		pointDeVie.setTextContent(Integer.toString(pv));
 		joueur.appendChild(pointDeVie);
 
-		Element vitesseDeplacement = document.createElement("vitesseDeplacement");
-		//background.setTextContent(" ");
+		vitesseDeplacement = document.createElement("vitesseDeplacement");
+		vitesseDeplacement.setTextContent(Integer.toString(vd));
 		joueur.appendChild(vitesseDeplacement);
 
-		Element cadenceTir = document.createElement("cadenceTir");
-		//background.setTextContent(" ");
+		cadenceTir = document.createElement("cadenceTir");
+		cadenceTir.setTextContent(Integer.toString(cd));
 		joueur.appendChild(cadenceTir);
 
-		Element puissanceTir = document.createElement("puissanceTir");
-		//background.setTextContent(" ");
+		puissanceTir = document.createElement("puissanceTir");
 			
-		Element TIR_UNIQUE = document.createElement("TIR_UNIQUE");
-		//background.setTextContent(" ");
+		TIR_UNIQUE = document.createElement("TIR_UNIQUE");
+		TIR_UNIQUE.setTextContent(Integer.toString(tu));
 		puissanceTir.appendChild(TIR_UNIQUE);
 
-		Element PARALLELE = document.createElement("PARALLELE");
-		//background.setTextContent(" ");
+		PARALLELE = document.createElement("PARALLELE");
+		PARALLELE.setTextContent(Integer.toString(p));
 		puissanceTir.appendChild(PARALLELE);
 
-		Element EVENTAIL = document.createElement("EVENTAIL");
-		//background.setTextContent(" ");
+		EVENTAIL = document.createElement("EVENTAIL");
+		EVENTAIL.setTextContent(Integer.toString(e));
 		puissanceTir.appendChild(EVENTAIL);
 
 		joueur.appendChild(puissanceTir);
@@ -172,70 +172,104 @@ public class BDeditor{
 		racine.appendChild(joueur);
 	}
 	
+	public void modifierJoueurXML(String t, String hb, int pv, int vd, int cd, int tu, int p, int e, int vt){
+		
+		texture.setTextContent(t);
+		hitBox.setTextContent(hb);
+		pointDeVie.setTextContent(Integer.toString(pv));
+		vitesseDeplacement.setTextContent(Integer.toString(vd));
+		cadenceTir.setTextContent(Integer.toString(cd));
+		TIR_UNIQUE.setTextContent(Integer.toString(tu));
+		PARALLELE.setTextContent(Integer.toString(p));	
+		EVENTAIL.setTextContent(Integer.toString(e));
+
+	}
+
 	public void ajoutEnnemiXML(){
-		for(int i=0;i>listeEnnemi.size();i++){
+System.out.println("debut ajout ennemi XML");
+		for(int i=0;i<listeEnnemi.size();i++){
 			ennemi = document.createElement("ennemi");
-			//background.setTextContent("");
 			
 			textureE = document.createElement("texture");
-			//background.setTextContent("");
+			textureE.setTextContent(listeEnnemi.get(i).getCheminTexture());
 			ennemi.appendChild(textureE);
 			
+			pointDeVieE = document.createElement("pointDeVie");
+			pointDeVieE.setTextContent(Integer.toString(listeEnnemi.get(i).getPointDeVieMax()));
+
 			pointsRecompense = document.createElement("pointsRecompense");
-			//background.setTextContent("");
+			pointsRecompense.setTextContent(Integer.toString(listeEnnemi.get(i).getPointsRecompense()));
 			ennemi.appendChild(pointsRecompense);
 			
 			orientationTir = document.createElement("orientationTir");
-			//background.setTextContent("");
+			if(listeEnnemi.get(i).getOrientationTir()==0){
+			orientationTir.setTextContent("VISE");
+			}else if(listeEnnemi.get(i).getOrientationTir()==1){
+			orientationTir.setTextContent("DROIT");
+			}else{
+			orientationTir.setTextContent("ALEATOIRE");
+			}
 			ennemi.appendChild(orientationTir);
 			
 			typeArmeE = document.createElement("typeArme");
-			//background.setTextContent("");
 
 				nomE = document.createElement("nom");
-				//background.setTextContent("");
-				typeArmeE.appendChild(nomE);
-			
-				nombreMunitionE = document.createElement("nombreMunition");
-				//background.setTextContent("");
-				typeArmeE.appendChild(nombreMunitionE);
+				if(listeEnnemi.get(i).getNomArme()==0){
+					nomE.setTextContent("TIR_UNIQUE");
+					typeArmeE.appendChild(nomE);
+				}else if(listeEnnemi.get(i).getNomArme()==1){
+					nomE.setTextContent("EVENTAIL");
+					typeArmeE.appendChild(nomE);
+					
+					nombreMunitionE = document.createElement("nombreMunition");
+					nombreMunitionE.setTextContent(Integer.toString(listeEnnemi.get(i).getMunArme()));
+					typeArmeE.appendChild(nombreMunitionE);
 				
-				ecartMunitionE = document.createElement("ecartMuntion");
-				//background.setTextContent("");
-				typeArmeE.appendChild(ecartMunitionE);
-			
+					ecartMunitionE = document.createElement("ecartMuntion");
+					ecartMunitionE.setTextContent(Integer.toString(listeEnnemi.get(i).getEcartArme()));
+					typeArmeE.appendChild(ecartMunitionE);
+				}else{
+					nomE.setTextContent("PARALLELE");
+					typeArmeE.appendChild(nomE);
+					
+					nombreMunitionE = document.createElement("nombreMunition");
+					nombreMunitionE.setTextContent(Integer.toString(listeEnnemi.get(i).getMunArme()));
+					typeArmeE.appendChild(nombreMunitionE);
+				
+					ecartMunitionE = document.createElement("ecartMuntion");
+					ecartMunitionE.setTextContent(Integer.toString(listeEnnemi.get(i).getEcartArme()));
+					typeArmeE.appendChild(ecartMunitionE);
+				}
+
 			ennemi.appendChild(typeArmeE);
 			
 			puissanceTirE = document.createElement("puissanceTir");
-			//background.setTextContent("");
+			puissanceTirE.setTextContent(Integer.toString(listeEnnemi.get(i).getPuissanceTir()));
 			ennemi.appendChild(puissanceTirE);
 			
 			cadenceTirE = document.createElement("cadenceTir");
-			//background.setTextContent("");
+			cadenceTirE.setTextContent(Long.toString(listeEnnemi.get(i).getCadenceTir()));
 			ennemi.appendChild(cadenceTirE);
 			
 			vitesseTirE = document.createElement("vitesseTir");
-			//background.setTextContent("");
+			vitesseTirE.setTextContent(Integer.toString(listeEnnemi.get(i).getVitesseTir()));
 			ennemi.appendChild(vitesseTirE);
 			
 			evolutionSpatioTemporelle = document.createElement("evolutionSpatioTemporelle");
-			//background.setTextContent("");
-			
 			
 			for(int j=0; j<listeEnnemi.get(i).getPositions().size();j++){
 				etape = document.createElement("etape");
-				//background.setTextContent("");
 				
 					temps = document.createElement("temps");
-					//background.setTextContent("");
+					temps.setTextContent(Long.toString(listeEnnemi.get(i).getTpsIntervalle().get(j).longValue()));
 					etape.appendChild(temps);
 					
 					pointXspa = document.createElement("pointXspa");
-					//background.setTextContent("");
+					pointXspa.setTextContent(Integer.toString(listeEnnemi.get(i).getPositions().get(j).getX()));
 					etape.appendChild(pointXspa);
 					
 					pointYspa = document.createElement("pointYspa");
-					//background.setTextContent("");
+					pointYspa.setTextContent(Integer.toString(listeEnnemi.get(i).getPositions().get(j).getY()));
 					etape.appendChild(pointYspa);
 					
 				evolutionSpatioTemporelle.appendChild(etape);
@@ -246,6 +280,7 @@ public class BDeditor{
 			racine.appendChild(ennemi);
 		}
 		document.appendChild(racine);
+System.out.println("ennemis ajouter xml");
 	}
 	
 	public void enregistrerFichier(String s){

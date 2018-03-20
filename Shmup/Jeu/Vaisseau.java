@@ -13,6 +13,7 @@ abstract class Vaisseau extends Texture{
 
     private long dernierTir;
     private int vitesseTir;
+	private int nomArme,ArmeNbMun,ArmeEcMun;
     private long cadenceTir;
     private int pointDeVie, pointDeVieMax;
     protected int typeArme, typeArmeNbMunition, typeArmeEcartMunition;
@@ -24,6 +25,9 @@ abstract class Vaisseau extends Texture{
 	dernierTir=0;
 	pointDeVie=ppointDeVie;
 	pointDeVieMax=ppointDeVie;
+	nomArme=ttypeArme;
+	ArmeNbMun=ttypeArmeNbMunition;
+	ArmeEcMun=ttypeArmeEcartMunition;
 	setTypeArme(ttypeArme, ttypeArmeNbMunition, ttypeArmeEcartMunition);
 	vitesseTir=vvitesseTir;
 	tailleX=ttailleX;
@@ -71,6 +75,22 @@ abstract class Vaisseau extends Texture{
 
     public int getVitesseTir(){
 	return vitesseTir;
+    }
+    
+    public int getNomArme(){
+    return nomArme;
+    }
+    
+    public int getMunArme(){
+    return ArmeNbMun;
+    }
+    
+    public int getEcartArme(){
+    return ArmeEcMun;
+    }
+    
+    public long getCadenceTir(){
+    return cadenceTir;
     }
 
     public abstract int getPuissanceTir();

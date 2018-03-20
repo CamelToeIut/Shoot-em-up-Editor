@@ -16,6 +16,7 @@ class Ennemi extends Vaisseau{
     private int orientationTir;
     private int pointsRecompense;
     private int puissanceTir;
+	private String chemin;
 
     public Ennemi(String str, int ppointDeVie, int vvitesseTir, long ccadenceTir, int ppuissanceTir, int oorientationTir, int ttypeArme, int ttypeArmeNbMunition, int ttypeArmeEcartMunition, ArrayList<Point> ppositions, ArrayList<Long> ttempsIntermediaires, int ppointsRecompense, int ttailleX, int ttailleY){
 	//Le paramètre de vitesse peut être mis à n'importe quoi car c'est le scénario qui donnera la vitesse des ennemis. On met 1 pour remplir.
@@ -25,6 +26,7 @@ class Ennemi extends Vaisseau{
 	orientationTir=oorientationTir;
 	pointsRecompense=ppointsRecompense;
 	puissanceTir=ppuissanceTir;
+	chemin=str;
     }
 
     public void majPosition(long tps){
@@ -461,7 +463,11 @@ class Ennemi extends Vaisseau{
     public ArrayList<Point> getPositions(){
 	return positions;
     }
-
+	
+	public int getOrientationTir(){
+	return orientationTir;
+	}
+	
     public int getPointsRecompense(){
 	return pointsRecompense;
     }
@@ -469,7 +475,11 @@ class Ennemi extends Vaisseau{
     public int getPuissanceTir(){
 	return puissanceTir;
     }
-
+	
+	public String getCheminTexture(){
+	return chemin;
+	}
+	
     public String toString(){
 	String retour="Ennemi\n"+super.toString()+"\n\tOrientation du tir : ";
 	if(orientationTir==VISE)
