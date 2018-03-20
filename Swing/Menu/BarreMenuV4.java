@@ -141,25 +141,6 @@ public class BarreMenu extends JFrame implements ActionListener{
      */
     JButton cursor = new JButton("Curseur");
 
-
-    JComboBox<String> comboBoxArme  = new JComboBox<String>();
-    JTextField nbAmmo = new JTextField("",10);
-    JTextField ecAmmo = new JTextField("",10);
-
-    /**
-     * Boutons boite dialogue joueur
-     */
-    JButton boutonJ1, boutonJ2, boutonJ3, boutonJ4, boutonJ5, boutonJ6;
-    /**
-     * Boutons boite dialogue ennemi
-     */
-    JButton boutonE1, boutonE2, boutonE3, boutonE4, boutonE5, boutonE6;
-    
-    /**
-     * Variable a envoyer au XML
-     */
-    String pathImage = new String("");
-
     /** 
      * Constructeur du menu
      * Permet de créer une barre de menu
@@ -170,7 +151,7 @@ public class BarreMenu extends JFrame implements ActionListener{
          * et autorisation de la redimension
          */
 	    setBounds(275,0,800,600);
-        setResizable(false);
+        setResizable(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         /**
@@ -284,7 +265,7 @@ public class BarreMenu extends JFrame implements ActionListener{
          * Ajout des onglets au panel haut-droit (panel 2)
          */
         onglets.addTab("Joueur", null, panelOng1, null); 
-        onglets.addTab("Ennemi", null, panelOng2, null);
+        onglets.addTab("Ennemi", null, panelOng2, null); 
         code.add(onglets);
 
         /**
@@ -298,7 +279,36 @@ public class BarreMenu extends JFrame implements ActionListener{
         panelOng1.add(ajoutJoueur, BorderLayout.NORTH);
         ajoutJoueur.addActionListener(this);
 
-        ongletJoueur();
+        JPanel panelCentreOng1 = new JPanel(new GridLayout(7,1));
+        panelOng1.add(panelCentreOng1, BorderLayout.CENTER);
+
+        panelCentreOng1.add(new JLabel("Points de vie : "));
+        TextField lifeJ = new TextField("", 10);
+        panelCentreOng1.add(lifeJ);
+
+        panelCentreOng1.add(new JLabel("Vitesse de déplacement : "));
+        TextField speedJ = new TextField("", 10);
+        panelCentreOng1.add(speedJ);
+
+        panelCentreOng1.add(new JLabel("Vitesse de tir : "));
+        TextField speedshotJ = new TextField("", 10);
+        panelCentreOng1.add(speedshotJ);
+
+        panelCentreOng1.add(new JLabel("Cadence de tir : "));
+        TextField cadenceJ = new TextField("", 10);
+        panelCentreOng1.add(cadenceJ);
+
+        panelCentreOng1.add(new JLabel("Puissance de Tir Unique : "));
+        TextField powerSJ = new TextField("", 10);
+        panelCentreOng1.add(powerSJ);
+
+        panelCentreOng1.add(new JLabel("Puissance de Tir Parallèle : "));
+        TextField powerPJ = new TextField("", 10);
+        panelCentreOng1.add(powerPJ);
+
+        panelCentreOng1.add(new JLabel("Puissance de Tir Éventail : "));
+        TextField powerEJ = new TextField("", 10);
+        panelCentreOng1.add(powerEJ);
 
         panelOng1.add(validerJoueur, BorderLayout.SOUTH);
 
@@ -310,254 +320,124 @@ public class BarreMenu extends JFrame implements ActionListener{
         panelOng2.add(ajoutEnnemi, BorderLayout.NORTH);
         ajoutEnnemi.addActionListener(this);
 
-        ongletEnnemi();
-
-        panelOng2.add(validerEnnemi, BorderLayout.SOUTH);
-
-        /**
-         * 
-         * Ajout des texture a la boite de dialogue de choix de texture joueur
-         */
-        JPanel textureJ = new JPanel(new GridLayout(3,2));
-        dialogueJoueur.add(textureJ);
-
-        ajoutTexture(textureJ);
-
-        JPanel textureE = new JPanel(new GridLayout(3,2));
-        dialogueEnnemi.add(textureE);
-
-        ajoutTextureE(textureE);
-
-        /**
-         * Panel code XML
-         */
-        code.add(new JButton("XML"));
-
-
-        nbAmmo.setEditable(false);
-        ecAmmo.setEditable(false);
-
-	    /** 
-         * Rend la fenêtre visible
-         */
-        setVisible(true);
-    }
-
-    /**
-     * Méthode permettant d'ajouter des boutons de texture
-     * .getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
-     */
-    public void ajoutTexture(JPanel textureJ){
-        ImageIcon textureJ1 = new ImageIcon("img/avion1.png");
-        boutonJ1 = new JButton(textureJ1);
-        textureJ.add(boutonJ1);
-        boutonJ1.addActionListener(this);
-        /**
-         * Texture 2
-         */
-        ImageIcon textureJ2 = new ImageIcon("img/avion2.png");
-        boutonJ2 = new JButton(textureJ2);
-        textureJ.add(boutonJ2);
-        boutonJ2.addActionListener(this);
-        /**
-         * Texture 3
-         */
-        ImageIcon textureJ3 = new ImageIcon("img/avion3.png");
-        boutonJ3 = new JButton(textureJ3);
-        textureJ.add(boutonJ3);
-        boutonJ3.addActionListener(this);
-        /**
-         * Texture 4
-         */
-        ImageIcon textureJ4 = new ImageIcon("img/avion4.png");
-        boutonJ4 = new JButton(textureJ4);
-        textureJ.add(boutonJ4);
-        boutonJ4.addActionListener(this);
-        /**
-         * Texture 5
-         */
-        ImageIcon textureJ5 = new ImageIcon("img/avion5.png");
-        boutonJ5 = new JButton(textureJ5);
-        textureJ.add(boutonJ5);
-        boutonJ5.addActionListener(this);
-        /**
-         * Texture 6
-         */
-        ImageIcon textureJ6 = new ImageIcon("img/avion6.png");
-        boutonJ6 = new JButton(textureJ6);
-        textureJ.add(boutonJ6);
-        boutonJ6.addActionListener(this);
-    }
-
-    /**
-     * Méthode permettant d'ajouter des boutons de texture pour les ennemis
-     */
-    public void ajoutTextureE(JPanel textureE){
-        ImageIcon textureE1 = new ImageIcon(new ImageIcon("img/ennemi_1_1.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-        boutonE1 = new JButton(textureE1);
-        textureE.add(boutonE1);
-        boutonE1.addActionListener(this);
-        /**
-         * Texture 2
-         */
-        ImageIcon textureE2 = new ImageIcon(new ImageIcon("img/ennemi_1_2.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-        boutonE2 = new JButton(textureE2);
-        textureE.add(boutonE2);
-        boutonE2.addActionListener(this);
-        /**
-         * Texture 3
-         */
-        ImageIcon textureE3 = new ImageIcon(new ImageIcon("img/ennemi_1_3.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-        boutonE3 = new JButton(textureE3);
-        textureE.add(boutonE3);
-        boutonE3.addActionListener(this);
-        /**
-         * Texture 4
-         */
-        ImageIcon textureE4 = new ImageIcon(new ImageIcon("img/ennemi_2_1.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-        boutonE4 = new JButton(textureE4);
-        textureE.add(boutonE4);
-        boutonE4.addActionListener(this);
-        /**
-         * Texture 5
-         */
-        ImageIcon textureE5 = new ImageIcon(new ImageIcon("img/ennemi_2_2.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-        boutonE5 = new JButton(textureE5);
-        textureE.add(boutonE5);
-        boutonE5.addActionListener(this);
-        /**
-         * Texture 6
-         */
-        ImageIcon textureE6 = new ImageIcon(new ImageIcon("img/ennemi_2_3.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-        boutonE6 = new JButton(textureE6);
-        textureE.add(boutonE6);
-        boutonE6.addActionListener(this);
-    }
-
-    /**
-     * Méthode permettant de créer un onglet joueur
-     */
-    public void ongletJoueur(){
-
-        JPanel panelCentreOng1 = new JPanel(new GridLayout(7,1));
-        panelOng1.add(panelCentreOng1, BorderLayout.CENTER);
-        /**
-         * Vie du joueur
-         */
-        panelCentreOng1.add(new JLabel("Points de vie : "));
-        JTextField lifeJ = new JTextField("", 10);
-        panelCentreOng1.add(lifeJ);
-        /**
-         * Vitesse de déplacement du joueur
-         */
-        panelCentreOng1.add(new JLabel("Vitesse de déplacement : "));
-        JTextField speedJ = new JTextField("", 10);
-        panelCentreOng1.add(speedJ);
-        /**
-         * Vitesse de tir du joueur
-         */
-        panelCentreOng1.add(new JLabel("Vitesse de tir : "));
-        JTextField speedshotJ = new JTextField("", 10);
-        panelCentreOng1.add(speedshotJ);
-        /**
-         * Cadence de tir du joueur
-         */
-        panelCentreOng1.add(new JLabel("Cadence de tir : "));
-        JTextField cadenceJ = new JTextField("", 10);
-        panelCentreOng1.add(cadenceJ);
-        /**
-         * Puissance de chaque mode de tir
-         */
-        /**
-         * Simple
-         */
-        panelCentreOng1.add(new JLabel("Puissance de Tir Unique : "));
-        JTextField powerSJ = new JTextField("", 10);
-        panelCentreOng1.add(powerSJ);
-        /**
-         * Parallèles
-         */
-        panelCentreOng1.add(new JLabel("Puissance de Tir Parallèle : "));
-        JTextField powerPJ = new JTextField("", 10);
-        panelCentreOng1.add(powerPJ);
-        /**
-         * Tir en éventail
-         */
-        panelCentreOng1.add(new JLabel("Puissance de Tir Éventail : "));
-        JTextField powerEJ = new JTextField("", 10);
-        panelCentreOng1.add(powerEJ);
-
-    }
-
-    /**
-     * Méthode permettant de créer l'onglet ennemi
-     */
-    public void ongletEnnemi(){
-        /**
-         * Panel de l'onglet = gridLayout
-         */
         JPanel panelCentreOng2 = new JPanel(new GridLayout(10,1));
         panelOng2.add(panelCentreOng2, BorderLayout.CENTER);
-        /**
-         * Zone de texte pour points de vie
-         */
+
         panelCentreOng2.add(new JLabel("Points de vie : "));
-        JTextField lifeE = new JTextField("", 10);
+        TextField lifeE = new TextField("", 10);
         panelCentreOng2.add(lifeE);
-        /**
-         * Point de récompense a chaque ennemi tué
-         */
+
         panelCentreOng2.add(new JLabel("Points de récompense : "));
-        JTextField rewardE = new JTextField("", 10);
+        TextField rewardE = new TextField("", 10);
         panelCentreOng2.add(rewardE);
-        /**
-         * Orientation des tirs ennemis
-         */
+
         panelCentreOng2.add(new JLabel("Orientation de tir : "));
         JComboBox<String> comboBoxE  = new JComboBox<String>();
         comboBoxE.addItem("Tir Droit");
         comboBoxE.addItem("Tir Visé");
         comboBoxE.addItem("Tir Aléatoire");
         panelCentreOng2.add(comboBoxE);
+
         /**
-         * Type de tir ennemi
+         * Type arme
          */
         panelCentreOng2.add(new JLabel("Type arme : "));
+        JComboBox<String> comboBoxArme  = new JComboBox<String>();
         comboBoxArme.addItem("Tir Unique");
         comboBoxArme.addItem("Tir Parallèle");
         comboBoxArme.addItem("Tir Éventail");
         panelCentreOng2.add(comboBoxArme);
-        comboBoxArme.addActionListener(this);
-        /**
-         * Nombre de munitions de l'arme
-         */
+
         panelCentreOng2.add(new JLabel("Nombre munitions : "));
+        TextField nbAmmo = new TextField("",10);
         panelCentreOng2.add(nbAmmo);
-        /**
-         * Ecart entre les tirs
-         */
+
         panelCentreOng2.add(new JLabel("Ecart munitions : "));
+        TextField ecAmmo = new TextField("",10);
         panelCentreOng2.add(ecAmmo);
+
+        if(comboBoxArme.getSelectedItem().toString().equals("Tir Unique")){
+            nbAmmo.setEditable(false);
+            ecAmmo.setEditable(false);
+        }else{
+            nbAmmo.setEditable(true);
+            ecAmmo.setEditable(true);
+        }
         
         /**
          * Puissance de tir
          */        
         panelCentreOng2.add(new JLabel("Puissance de Tir : "));
-        JTextField powerE = new JTextField("", 10);
+        TextField powerE = new TextField("", 10);
         panelCentreOng2.add(powerE);
-        /**
-         * Cadence de tir
-         */
+
         panelCentreOng2.add(new JLabel("Cadence de tir : "));
-        JTextField cadenceE = new JTextField("", 10);
+        TextField cadenceE = new TextField("", 10);
         panelCentreOng2.add(cadenceE);
-        /**
-         * Vitesse de déplacement des tirs
-         */
+
         panelCentreOng2.add(new JLabel("Vitesse de tir : "));
-        JTextField speedSE = new JTextField("", 10);
+        TextField speedSE = new TextField("", 10);
         panelCentreOng2.add(speedSE);
 
+        panelOng2.add(validerEnnemi, BorderLayout.SOUTH);
+
+        /**
+         * Ajout des texture a la boite de dialogue de choix de texture joueur
+         */
+        JPanel textureJ = new JPanel(new GridLayout(3,2));
+        dialogueJoueur.add(textureJ);
+        /**
+         * Texture 1
+         */
+        ImageIcon textureJ1 = new ImageIcon("img/avion1.png");
+        JButton boutonJ1 = new JButton(textureJ1);
+        textureJ.add(boutonJ1);
+        boutonJ1.addActionListener(this);
+        /**
+         * Texture 2
+         */
+        ImageIcon textureJ2 = new ImageIcon("img/avion2.png");
+        JButton boutonJ2 = new JButton(textureJ2);
+        textureJ.add(boutonJ2);
+        boutonJ2.addActionListener(this);
+        /**
+         * Texture 3
+         */
+        ImageIcon textureJ3 = new ImageIcon("img/avion3.png");
+        JButton boutonJ3 = new JButton(textureJ3);
+        textureJ.add(boutonJ3);
+        boutonJ3.addActionListener(this);
+        /**
+         * Texture 4
+         */
+        ImageIcon textureJ4 = new ImageIcon("img/avion4.png");
+        JButton boutonJ4 = new JButton(textureJ4);
+        textureJ.add(boutonJ4);
+        boutonJ4.addActionListener(this);
+        /**
+         * Texture 5
+         */
+        ImageIcon textureJ5 = new ImageIcon("img/avion5.png");
+        JButton boutonJ5 = new JButton(textureJ5);
+        textureJ.add(boutonJ5);
+        boutonJ5.addActionListener(this);
+        /**
+         * Texture 6
+         */
+        ImageIcon textureJ6 = new ImageIcon("img/avion6.png");
+        JButton boutonJ6 = new JButton(textureJ6);
+        textureJ.add(boutonJ6);
+        boutonJ6.addActionListener(this);
+
+        /**
+         * Panel code XML
+         */
+        code.add(new JButton("XML"));
+
+	    /** 
+         * Rend la fenêtre visible
+         */
+        setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e){
@@ -626,114 +506,5 @@ public class BarreMenu extends JFrame implements ActionListener{
             dialogueEnnemi.setLocationRelativeTo(null);
             dialogueEnnemi.setVisible(true);
         }
-
-        if(e.getSource() == comboBoxArme){
-            /**
-             * Listener
-             */
-            if(comboBoxArme.getSelectedItem().toString().equals("Tir Unique")){
-                nbAmmo.setEditable(false);
-                ecAmmo.setEditable(false);
-                nbAmmo.setText("");
-                ecAmmo.setText("");
-                this.repaint();
-            }else{
-                nbAmmo.setEditable(true);
-                ecAmmo.setEditable(true);
-                this.repaint();
-            }
-        }
-
-        /**
-         * Action Listener des boutons
-         */
-        /**
-         * Avion 1
-         */
-        if(e.getSource() == boutonJ1){
-            dialogueJoueur.dispose();
-            pathImage = "img/avion1";
-        }
-        /**
-         * Avion 2
-         */
-        if(e.getSource() == boutonJ2){
-            dialogueJoueur.dispose();
-            pathImage = "img/avion2";
-        }
-        /**
-         * Avion 3
-         */
-        if(e.getSource() == boutonJ3){
-            dialogueJoueur.dispose();
-            pathImage = "img/avion3";
-        }
-        /**
-         * Avion 4
-         */
-        if(e.getSource() == boutonJ4){
-            dialogueJoueur.dispose();
-            pathImage = "img/avion4";
-        }
-        /**
-         * Avion 5
-         */
-        if(e.getSource() == boutonJ5){
-            dialogueJoueur.dispose();
-            pathImage = "img/avion5";
-        }
-        /**
-         * Avion 6
-         */
-        if(e.getSource() == boutonJ6){
-            dialogueJoueur.dispose();
-            pathImage = "img/avion6";
-        }
-
-        /**
-         * Action Listener des boutons ennemis
-         */
-        /**
-         * Avion 1
-         */
-        if(e.getSource() == boutonE1){
-            dialogueEnnemi.dispose();
-            pathImage = "img/ennemi_1_1";
-        }
-        /**
-         * Avion 2
-         */
-        if(e.getSource() == boutonE2){
-            dialogueEnnemi.dispose();
-            pathImage = "img/ennemi_1_2";
-        }
-        /**
-         * Avion 3
-         */
-        if(e.getSource() == boutonE3){
-            dialogueEnnemi.dispose();
-            pathImage = "img/ennemi_1_3";
-        }
-        /**
-         * Avion 4
-         */
-        if(e.getSource() == boutonE4){
-            dialogueEnnemi.dispose();
-            pathImage = "img/ennemi_2_1";
-        }
-        /**
-         * Avion 5
-         */
-        if(e.getSource() == boutonE5){
-            dialogueEnnemi.dispose();
-            pathImage = "img/ennemi_2_2";
-        }
-        /**
-         * Avion 6
-         */
-        if(e.getSource() == boutonE6){
-            dialogueEnnemi.dispose();
-            pathImage = "img/ennemi_2_3";
-        } 
     }
 }
