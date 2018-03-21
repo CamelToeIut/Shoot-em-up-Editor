@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class BarreMenu extends JFrame implements ActionListener{
+public class BarreMenuV1 extends JFrame implements ActionListener{
     /**
      * Création de la barre de menu
      */
