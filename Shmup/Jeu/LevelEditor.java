@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class LevelEditor extends JFrame implements ActionListener{
 
 	BDeditor xml = new BDeditor();
-	int ori,type;
+	int ori,type,nbmun,ecmun;
 	ArrayList<MG2D.geometrie.Point> aP = new ArrayList();
 	ArrayList<Long> aL = new ArrayList();
 
@@ -221,6 +221,7 @@ public class LevelEditor extends JFrame implements ActionListener{
          * Paramétrage de la taille de la fenêtre, de son opération de fermeture par défaut 
          * et autorisation de la redimension
          */
+        xml.parametreJeu(30,"logo.png",5000,400,700);
 	    setBounds(275,0,800,600);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -1019,42 +1020,44 @@ public class LevelEditor extends JFrame implements ActionListener{
 
             if(erreurE == false){
                if(arme.equals("Tir Unique")){
+               		nbmun=0;
+               		ecmun=0;
                		type=0;
                		if(modeTir.equals("Tir Visé")){
                			ori=0;
-               			xml.ajouterEnnemi();
                		}else if(modeTir.equals("Tir Droit")){
                			ori=1;
-               			xml.ajouterEnnemi();
                		}else{
                			ori=2;
-               			xml.ajouterEnnemi();
                		}
                }else if(arme.equals("Tir Éventail")){
+              		nbmun=Integer.parseInt(nbMun);
+               		ecmun=Integer.parseInt(ecartMun);
                		type=1;
                		if(modeTir.equals("Tir Visé")){
                			ori=0;
-               			xml.ajouterEnnemi();
                		}else if(modeTir.equals("Tir Droit")){
                			ori=1;
-               			xml.ajouterEnnemi();
                		}else{
                			ori=2;
-               			xml.ajouterEnnemi();
                		}
                }else{
+               		nbmun=Integer.parseInt(nbMun);
+               		ecmun=Integer.parseInt(ecartMun);
                		type=2;
                		if(modeTir.equals("Tir Visé")){
                			ori=0;
-               			xml.ajouterEnnemi();
                		}else if(modeTir.equals("Tir Droit")){
                			ori=1;
-               			xml.ajouterEnnemi();
                		}else{
                			ori=2;
-               			xml.ajouterEnnemi();
                		}
                }
+               xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),
+               			Long.parseLong(cadence),Integer.parseInt(puissanceSimple),ori,type,nbmun,
+               			ecmun,aP,aL,Integer.parseInt(recompense),50,80);
+               			aP.clear();
+               			aL.clear();
             }
             this.repaint();
         }

@@ -279,7 +279,6 @@ System.out.println("debut ajout ennemi XML");
 			
 			racine.appendChild(ennemi);
 		}
-		document.appendChild(racine);
 System.out.println("ennemis ajouter xml");
 	}
 	
