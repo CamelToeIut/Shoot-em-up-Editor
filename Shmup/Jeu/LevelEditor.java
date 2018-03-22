@@ -10,15 +10,9 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import MG2D.geometrie.*;
-import java.util.ArrayList;
 
 public class LevelEditor extends JFrame implements ActionListener{
-	
-	BDeditor Xml = new BDeditor();
-	int Ori,typ;
-	ArrayList<MG2D.geometrie.Point> aP = new ArrayList();
-	ArrayList<Long> aL = new ArrayList();
+
     /**
      * Création des barres de menu
      */
@@ -122,6 +116,29 @@ public class LevelEditor extends JFrame implements ActionListener{
     private JDialog dialogueEnnemi = new JDialog(this, "Choix de la texture du Joueur", true);
 
     /**
+     * Création de la boite de déplacement spatio temporel
+     */
+    private JDialog spatio = new JDialog(this, "Déplacement Spatio-Temporel", true);
+    private JPanel contentSpatio = new JPanel(new GridLayout(6,1));
+    JButton dpctSpatio = new JButton("Deplacements");
+    JButton ajouterDpct = new JButton("Ajouter");
+    JButton finSpatio = new JButton("Fin");
+
+    /**
+     * Textfields des dpcy spatiaux
+     */
+    JTextField dpctXAvant = new JTextField("",10);
+    JTextField dpctXApres = new JTextField("",10);
+    
+    JTextField dpctYAvant = new JTextField("",10);
+    JTextField dpctYApres = new JTextField("",10);
+
+    JTextField tempsAvant = new JTextField("",10);
+    JTextField tempsApres = new JTextField("",10);
+
+    String xSpatio, ySpatio, tSpatio;
+    boolean erreurSpatio = false;
+    /**
      * Création des panel
      */
     JPanel global = new JPanel(new BorderLayout());
@@ -147,7 +164,8 @@ public class LevelEditor extends JFrame implements ActionListener{
     /**
      * Bouton provisoire pour la partie curseur
      */
-    JButton cursor = new JButton("Curseur");
+    JTextField nomFic = new JTextField("",30);
+    JButton enreg = new JButton("Enregistrer");
 
     /**
      * Variables pour l'onglet ennemi
@@ -193,7 +211,6 @@ public class LevelEditor extends JFrame implements ActionListener{
      * Permet de créer une barre de menu
      */
     public LevelEditor(){
-    Xml.parametreJeu(30,"fond.png",5,10,10);
         /**
          * Paramétrage de la taille de la fenêtre, de son opération de fermeture par défaut 
          * et autorisation de la redimension
@@ -278,8 +295,11 @@ public class LevelEditor extends JFrame implements ActionListener{
         /**
          * On ajoute le curseur au panel south
          */
-        global.add(curseur, BorderLayout.SOUTH);
-        curseur.add(cursor);
+        JPanel curseurP = new JPanel(new GridLayout(1,2));
+        curseurP.add(nomFic);
+        curseurP.add(enreg);
+        enreg.addActionListener(this);
+        global.add(curseurP, BorderLayout.SOUTH);
 
         /**
          * Ajout du texte dans la boite de dialogue à propos
@@ -368,12 +388,68 @@ public class LevelEditor extends JFrame implements ActionListener{
         nbAmmo.setEditable(false);
         ecAmmo.setEditable(false);
 
+        /**
+         * Ajout a la boite de déplacement spatiaux
+         */
+        JPanel panelSouth = new JPanel(new GridLayout(1,1));
+        /**
+         * Anciennes valeur
+         */
+        /**
+         * Position en X
+         */
+        contentSpatio.add(new JLabel(" Position X précédente"));
+        contentSpatio.add(dpctXAvant);
+        dpctXAvant.setEditable(false);
+        /**
+         * Position Y
+         */
+        contentSpatio.add(new JLabel(" Position Y précédente"));
+        contentSpatio.add(dpctYAvant);
+        dpctYAvant.setEditable(false);
+        /**
+         * Temps
+         */
+        contentSpatio.add(new JLabel(" Temps précédent"));
+        contentSpatio.add(tempsAvant);
+        tempsAvant.setEditable(false);
+        /**
+         * Valeurs actuelles
+         */
+        /**
+         * Position X
+         */
+        contentSpatio.add(new JLabel(" Position X"));
+        contentSpatio.add(dpctXApres);
+        dpctXApres.addActionListener(this);
+        /**
+         * Position Y
+         */
+        contentSpatio.add(new JLabel(" Position Y"));
+        contentSpatio.add(dpctYApres);
+        dpctYApres.addActionListener(this);
+        /**
+         * Temps
+         */
+        contentSpatio.add(new JLabel(" Temps"));
+        contentSpatio.add(tempsApres);
+        tempsApres.addActionListener(this);
+        
+        panelSouth.add(ajouterDpct);
+        ajouterDpct.addActionListener(this);
+        panelSouth.add(finSpatio);
+        finSpatio.addActionListener(this);
+        spatio.add(panelSouth, BorderLayout.SOUTH);
+        /**
+         * Contenu de la boite
+         */
+        spatio.add(contentSpatio, BorderLayout.CENTER);
+
 	    /** 
          * Rend la fenêtre visible
          */
         setVisible(true);
     }
-    
 
     /**
      * Méthode permettant d'ajouter des boutons de texture
@@ -538,17 +614,18 @@ public class LevelEditor extends JFrame implements ActionListener{
          * Orientation des tirs ennemis
          */
         panelCentreOng2.add(new JLabel("Orientation de tir : "));
-        comboBoxE.addItem("DROIT");
-        comboBoxE.addItem("VISE");
-        comboBoxE.addItem("ALEATOIRE");
+        comboBoxE.addItem("Tir Droit");
+        comboBoxE.addItem("Tir Visé");
+        comboBoxE.addItem("Tir Aléatoire");
         panelCentreOng2.add(comboBoxE);
+        comboBoxE.addActionListener(this);
         /**
          * Type de tir ennemi
          */
         panelCentreOng2.add(new JLabel("Type arme : "));
-        comboBoxArme.addItem("TIR_UNIQUE");
-        comboBoxArme.addItem("EVENTAIL");
-        comboBoxArme.addItem("PARALLELE");
+        comboBoxArme.addItem("Tir Unique");
+        comboBoxArme.addItem("Tir Parallèle");
+        comboBoxArme.addItem("Tir Éventail");
         panelCentreOng2.add(comboBoxArme);
         comboBoxArme.addActionListener(this);
         /**
@@ -577,7 +654,12 @@ public class LevelEditor extends JFrame implements ActionListener{
          */
         panelCentreOng2.add(new JLabel("Vitesse de tir : "));
         panelCentreOng2.add(speedSE);
-
+        /**
+         * Bouton de déplacement spatio
+         */
+        panelCentreOng2.add(new JLabel("Déplacement :"));
+        panelCentreOng2.add(dpctSpatio);
+        dpctSpatio.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e){
@@ -638,6 +720,14 @@ public class LevelEditor extends JFrame implements ActionListener{
             dialogueJoueur.setVisible(true);
         }
 
+        /**
+         * Appui sur le bouton de déplacement spatio
+         */
+        if(e.getSource() == dpctSpatio){
+            spatio.setSize(400,250);
+            spatio.setLocationRelativeTo(null);
+            spatio.setVisible(true);
+        }
         /**
          * Lorsque l'on clique sur le bouton ajout ennemi, une boite de dialogue s'affiche et permet le choix de la texture
          */
@@ -813,10 +903,56 @@ public class LevelEditor extends JFrame implements ActionListener{
             System.out.println("\n");
 
             if(erreur == false){
-               
+                //Envoie au xml
             }
             this.repaint();
         }
+
+        if(e.getSource() == ajouterDpct){
+            if(dpctXApres.getText().equals("")){
+                System.out.println("Manque x");
+                erreurSpatio = true;
+            }
+            if(dpctYApres.getText().equals("")){
+                erreurSpatio = true;
+                System.out.println("Manque y");
+            }
+            if(tempsApres.getText().equals("")){
+                erreurSpatio = true;
+                System.out.println("Manque temps");
+            }
+            if(erreurSpatio == false){
+                /**
+                 * Conservation des valeurs
+                 */
+                xSpatio = dpctXApres.getText();
+                ySpatio = dpctYApres.getText();
+                tSpatio = tempsApres.getText();
+
+                /**
+                 * Vider les champs du bas
+                 */
+                dpctXApres.setText("");
+                dpctYApres.setText("");
+                tempsApres.setText("");
+
+                /**
+                 * Changement des valeurs des champs du haut
+                 */
+                dpctXAvant.setText(xSpatio);
+                dpctYAvant.setText(ySpatio);
+                tempsAvant.setText(tSpatio);
+                /**
+                 * Ajout à l'Array de xSpatio ySpatio et tSpatio
+                 */
+            }
+
+        }
+
+        if(e.getSource() == finSpatio){
+            spatio.dispose();
+        }
+
         /**
          * ActionListener du bouton valider ennemi pour l'envoie au xml
          */
@@ -864,7 +1000,9 @@ public class LevelEditor extends JFrame implements ActionListener{
             }
             arme = comboBoxArme.getSelectedItem().toString();
             modeTir = comboBoxE.getSelectedItem().toString();
-
+            /**
+             * Condition de choix de texture
+             */
             if(choixEnnemi == false){
                 System.out.println("Veuillez choisir une texture a l'ennemi");
                 erreurE = true;
@@ -872,44 +1010,19 @@ public class LevelEditor extends JFrame implements ActionListener{
             System.out.println("\n");
 
             if(erreurE == false){
-            	if(modeTir.equals("DROIT")){
-            		ori=1;
-            			if(arme.equals("DROIT")){
-            				typ=0;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-            			}else if(arme.equals("EVENTAIL")){
-            				typ=1;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,+Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-            			}else{
-            				typ=2;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-            			}
-            	}else if(modeTir.equals("TIR_UNIQUE")){
-            		ori=0;
-            		   if(arme.equals("DROIT")){
-            				typ=0;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-            			}else if(arme.equals("EVENTAIL")){
-            				typ=1;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-            			}else{
-            				typ=2;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);}         			
-            	}else{
-            		ori=2;
-            		if(arme.equals("DROIT")){
-            				typ=0;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-            			}else if(arme.equals("EVENTAIL")){
-            				typ=1;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-            			}else{
-            				typ=2;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-}		
+                //Envoie au xml
             }
-            
             this.repaint();
+        }
+
+        if(e.getSource() == enreg){
+            String lien = nomFic.getText();
+
+            if(!nomFic.getText().equals("")){
+                //envoyer lien to xml
+            }
         }
     }
 }
+
+//1022, 1013 et 947
