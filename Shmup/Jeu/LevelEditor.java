@@ -951,9 +951,8 @@ public class LevelEditor extends JFrame implements ActionListener{
                 dpctXAvant.setText(xSpatio);
                 dpctYAvant.setText(ySpatio);
                 tempsAvant.setText(tSpatio);
-                /**
-                 * Ajout à l'Array de xSpatio ySpatio et tSpatio
-                 */
+                aP.add(new MG2D.geometrie.Point(Integer.parseInt(xSpatio),Integer.parseInt(ySpatio)));
+                aL.add(new Long(Long.parseLong(tSpatio)));
             }
 
         }
@@ -1068,6 +1067,7 @@ public class LevelEditor extends JFrame implements ActionListener{
             if(!nomFic.getText().equals("")){
             	xml.ajoutEnnemiXML();
                 xml.enregistrerFichier(lien);
+                System.exit(0);
             }
         }
     }
