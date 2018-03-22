@@ -284,8 +284,8 @@ System.out.println("ennemis ajouter xml");
 	}
 	
 	public void enregistrerFichier(String s){
-		
-	    		System.out.println("Sauvegarde..");
-			transformerXml(document, s.concat(".xml"));
-	}
+            document.appendChild(racine);
+                System.out.println("Sauvegarde..");
+            transformerXml(document, s.concat(".xml"));
+    }
 }

@@ -10,8 +10,14 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
+import MG2D.geometrie.*;
+import java.util.ArrayList;
 public class LevelEditor extends JFrame implements ActionListener{
+
+	BDeditor xml = new BDeditor();
+	int ori,type;
+	ArrayList<MG2D.geometrie.Point> aP = new ArrayList();
+	ArrayList<Long> aL = new ArrayList();
 
     /**
      * Création des barres de menu
@@ -204,7 +210,7 @@ public class LevelEditor extends JFrame implements ActionListener{
      * Variable a envoyer au XML
      */
     String pathImage = new String("");
-    String vie, vitesse, vitesseTir, cadence, puissanceSimple, puissancePara, puissanceAlea, nbMun, ecartMun, recompense, arme, modeTir;
+    String vie, vitesse, vitesseTir, cadence, puissanceSimple, puissancePara, puissanceEve, nbMun, ecartMun, recompense, arme, modeTir;
     boolean choixJoueur = false, choixEnnemi = false;
     /** 
      * Constructeur du menu
@@ -892,7 +898,7 @@ public class LevelEditor extends JFrame implements ActionListener{
                 System.out.println("Veuillez entrer une puissance pour le mode de tir parallèle");
                 erreur = true;
             }
-            if((puissanceAlea = powerEJ.getText()).equals("")){
+            if((puissanceEve = powerEJ.getText()).equals("")){
                 System.out.println("Veuillez entrer une puissance pour le mode de tir éventail");
                 erreur = true;
             }
@@ -903,11 +909,57 @@ public class LevelEditor extends JFrame implements ActionListener{
             System.out.println("\n");
 
             if(erreur == false){
-               
+                xml.ajoutJoueurXML(pathImage.concat(".png"),pathImage.concat(".hitbox"),Integer.parseInt(vie),Integer.parseInt(vitesse),
+                Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),Integer.parseInt(puissancePara),
+                Integer.parseInt(puissanceEve),Integer.parseInt(vitesseTir));
             }
             this.repaint();
         }
-        /**
+
+        if(e.getSource() == ajouterDpct){
+            if(dpctXApres.getText().equals("")){
+                System.out.println("Manque x");
+                erreurSpatio = true;
+            }
+            if(dpctYApres.getText().equals("")){
+                erreurSpatio = true;
+                System.out.println("Manque y");
+            }
+            if(tempsApres.getText().equals("")){
+                erreurSpatio = true;
+                System.out.println("Manque temps");
+            }
+            if(erreurSpatio == false){
+                /**
+                 * Conservation des valeurs
+                 */
+                xSpatio = dpctXApres.getText();
+                ySpatio = dpctYApres.getText();
+                tSpatio = tempsApres.getText();
+
+                /**
+                 * Vider les champs du bas
+                 */
+                dpctXApres.setText("");
+                dpctYApres.setText("");
+                tempsApres.setText("");
+
+                /**
+                 * Changement des valeurs des champs du haut
+                 */
+                dpctXAvant.setText(xSpatio);
+                dpctYAvant.setText(ySpatio);
+                tempsAvant.setText(tSpatio);
+                /**
+                 * Ajout à l'Array de xSpatio ySpatio et tSpatio
+                 */
+            }
+
+        }
+
+        if(e.getSource() == finSpatio){
+            spatio.dispose();
+        }
 
         /**
          * ActionListener du bouton valider ennemi pour l'envoie au xml
@@ -960,94 +1012,50 @@ public class LevelEditor extends JFrame implements ActionListener{
              * Condition de choix de texture
              */
             if(choixEnnemi == false){
-		boolean erreurE = false;
-
-            /**
-             * On teste chacune de valeur entrées dans les combo box et les text fields 
-             * Si une valeur est manquante, le contenu n'est pas envoyé au xml et une erreur est envoyée
-             * Sinon suite au clic sur envoyer, les données sont transmises au xml
-             */
-
-            if((vie = lifeE.getText()).equals("")){
-                System.out.println("Veuillez entrer une valeur dans le champs vie de l'ennemi");
-                erreurE = true;
-            }
-            if((recompense = rewardE.getText()).equals("")){
-                System.out.println("Veuillez entrer une valeur de récompense à l'ennemi");
-                erreurE = true;
-            }
-            /**
-             * Condition supplémentaire dûe au mode de tir choisi
-             */
-            if( (nbMun = nbAmmo.getText()).equals("") && 
-            !(comboBoxArme.getSelectedItem().toString().equals("Tir Unique")) ){
-                System.out.println("Veuillez entrer unnombre de munition pour l'ennemi");
-                erreurE = true;
-            }
-            if( (ecartMun = ecAmmo.getText()).equals("") &&
-            !(comboBoxArme.getSelectedItem().toString().equals("Tir Unique")) ){
-                System.out.println("Veuillez indiquer l'écart entre les munition de l'ennemi");
-                erreurE = true;
-            }
-            if((puissanceSimple = powerE.getText()).equals("")){
-                System.out.println("Veuillez entrer une puissance pour l'ennemi'");
-                erreurE = true;
-            }
-            if((cadence = cadenceE.getText()).equals("")){
-                System.out.println("Veuillez entrer une cadence à l'ennemi");
-                erreurE = true;
-            }
-            if((vitesseTir = speedSE.getText()).equals("")){
-                System.out.println("Veuillez entrer une vitesse de tir à l'ennemi");
-                erreurE = true;
-            }
-            arme = comboBoxArme.getSelectedItem().toString();
-            modeTir = comboBoxE.getSelectedItem().toString();
-
-            if(choixEnnemi == false){
                 System.out.println("Veuillez choisir une texture a l'ennemi");
                 erreurE = true;
             }
             System.out.println("\n");
 
             if(erreurE == false){
-            	if(modeTir.equals("DROIT")){
-            		ori=1;
-            			if(arme.equals("DROIT")){
-            				typ=0;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-            			}else if(arme.equals("EVENTAIL")){
-            				typ=1;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,+Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-            			}else{
-            				typ=2;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-            			}
-            	}else if(modeTir.equals("TIR_UNIQUE")){
-            		ori=0;
-            		   if(arme.equals("DROIT")){
-            				typ=0;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-            			}else if(arme.equals("EVENTAIL")){
-            				typ=1;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-            			}else{
-            				typ=2;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);}         			
-            	}else{
-            		ori=2;
-            		if(arme.equals("DROIT")){
-            				typ=0;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-            			}else if(arme.equals("EVENTAIL")){
-            				typ=1;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-            			}else{
-            				typ=2;
-            				Xml.ajouterEnnemi(pathImage.concat(".png"),Integer.parseInt(vie),Integer.parseInt(vitesseTir),Integer.parseInt(cadence),Integer.parseInt(puissanceSimple),ori,type,Integer.parseInt(nbMun),Integer.parseInt(ecartMun),aP,aL,Integer.parseInt(recompense),50,80);
-}		
+               if(arme.equals("Tir Unique")){
+               		type=0;
+               		if(modeTir.equals("Tir Visé")){
+               			ori=0;
+               			xml.ajouterEnnemi();
+               		}else if(modeTir.equals("Tir Droit")){
+               			ori=1;
+               			xml.ajouterEnnemi();
+               		}else{
+               			ori=2;
+               			xml.ajouterEnnemi();
+               		}
+               }else if(arme.equals("Tir Éventail")){
+               		type=1;
+               		if(modeTir.equals("Tir Visé")){
+               			ori=0;
+               			xml.ajouterEnnemi();
+               		}else if(modeTir.equals("Tir Droit")){
+               			ori=1;
+               			xml.ajouterEnnemi();
+               		}else{
+               			ori=2;
+               			xml.ajouterEnnemi();
+               		}
+               }else{
+               		type=2;
+               		if(modeTir.equals("Tir Visé")){
+               			ori=0;
+               			xml.ajouterEnnemi();
+               		}else if(modeTir.equals("Tir Droit")){
+               			ori=1;
+               			xml.ajouterEnnemi();
+               		}else{
+               			ori=2;
+               			xml.ajouterEnnemi();
+               		}
+               }
             }
-            
             this.repaint();
         }
 
@@ -1055,7 +1063,8 @@ public class LevelEditor extends JFrame implements ActionListener{
             String lien = nomFic.getText();
 
             if(!nomFic.getText().equals("")){
-                //envoyer lien to xml
+            	xml.ajoutEnnemiXML();
+                xml.enregistrerFichier(lien);
             }
         }
     }
